@@ -3,64 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partners</title>
+    <title>Home</title>
+ <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
-            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
         }
-        .partners-section {
-            text-align: center;
+        .header img {
+            max-height: 50px;
+            margin-right: 10px;
         }
-        .partners-heading {
-            font-size: 2em;
-            margin-bottom: 20px;
+        .header .logo-text {
+            display: flex;
+            align-items: center;
         }
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .header .logo-text a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
         }
-        .partner-logo {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+        .nav-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
         }
-        .partner-logo:hover {
-            transform: scale(1.05);
+        .content {
+            flex: 1;
+            overflow: hidden;
         }
-        .partner-logo img {
-            max-width: 100px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        .content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
-
-    <div class="partners-section">
-        <div class="partners-heading">Partners</div>
-        <div class="partners-grid">
-            <a href="https://play.szvy.win" target="_blank" class="partner-logo">
-                <img src="https://i.ibb.co/GM0TFjM/szvylogo.png" alt="Partner 1">
-            </a>
-            <a href="https://www.brunysixl.xyz/" target="_blank" class="partner-logo">
-                <img src="https://www.brunysixl.xyz/static/ico.png" alt="BrunysIXL - Discontinued">
-            </a>
-            <a href="https://voucan.github.io" target="_blank" class="partner-logo">
-                <img src="https://i.ibb.co/yYvMJjh/placeholder.jpg" alt="Placeholder">
-            </a>
+    <div class="header">
+        <div class="logo-text">
+            <img src="https://i.pinimg.com/474x/6b/d3/8a/6bd38aa501f07e08932445c0f8432219.jpg" alt="Logo">
+            <a href="/">US4</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="/games">🕹️ Games</a>
+            <a href="/partners">👥 Partners</a>
+            <a href="/extra">➕ Extra</a>
         </div>
     </div>
-
+    <div class="content">
+        <iframe src="/p/partners.html"></iframe>
+    </div>
 </body>
 </html>
