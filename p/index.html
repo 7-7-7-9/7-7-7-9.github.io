@@ -1,1 +1,59 @@
-// nothing here right now
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US4 This Month</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #FFF;
+        }
+        h2 {
+            font-size: 24px;
+            color: #DDD;
+            margin-top: 10px; /* Added margin for spacing */
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 150px; /* Adjust image size as needed */
+            height: auto;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>US4</h1>
+    <h2>This Month's Games</h2>
+
+    <div class="image-container">
+        <a href="/games/retro-bowl.html" target="_blank">
+            <img src="/retro-bowl/retro-bowl.jfif" alt="Image 1">
+        </a>
+        <a href="https://link2" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Image 2">
+        </a>
+        <a href="https://link1" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Image 3">
+        </a>
+    </div>
+
+</body>
+</html>
