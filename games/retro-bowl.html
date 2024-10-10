@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -50,6 +51,8 @@
 
         .button-container button:hover {
             color: #ffc700;
+        } /* Fixed missing closing brace */
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -74,28 +77,29 @@
             text-decoration: none;
             font-size: 24px;
             font-weight: bold;
-}
+        }
 
-.nav-buttons a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
+        .nav-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
 
-.content {
-    flex: 1;
-    overflow: hidden;
-}
+        .content {
+            flex: 1;
+            overflow: hidden;
+            width: 100%; /* Ensure the content takes full width */
+        }
 
-.content iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+        .content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
-<div class="header">
+    <div class="header">
         <div class="logo-text">
             <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
             <a href="/">US4</a>
@@ -109,31 +113,30 @@
     <div class="content">
         <iframe src="/p"></iframe>
     </div>
-<div class="container">
-    <iframe id="game-frame" class="game-iframe" src="https://us4-ubg.github.io/retro-bowl/" allowfullscreen></iframe>
+    <div class="container">
+        <iframe id="game-frame" class="game-iframe" src="https://us4-ubg.github.io/retro-bowl/" allowfullscreen></iframe>
 
-    <div class="button-container">
-        <button onclick="refreshGame()">&#x21bb;</button>
-        <button onclick="toggleFullscreen()">&#x26F6;</button>
+        <div class="button-container">
+            <button onclick="refreshGame()">&#x21bb;</button>
+            <button onclick="toggleFullscreen()">&#x26F6;</button>
+        </div>
     </div>
-</div>
 
-<script>
-    function refreshGame() {
-        document.getElementById('game-frame').src = document.getElementById('game-frame').src;
-    }
-
-    function toggleFullscreen() {
-        var iframe = document.getElementById('game-frame');
-        if (!document.fullscreenElement) {
-            iframe.requestFullscreen().catch(err => {
-                alert(`Error attempting to enable fullscreen mode: ${err.message}`);
-            });
-        } else {
-            document.exitFullscreen();
+    <script>
+        function refreshGame() {
+            document.getElementById('game-frame').src = document.getElementById('game-frame').src;
         }
-    }
-</script>
 
+        function toggleFullscreen() {
+            var iframe = document.getElementById('game-frame');
+            if (!document.fullscreenElement) {
+                iframe.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable fullscreen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+    </script>
 </body>
 </html>
