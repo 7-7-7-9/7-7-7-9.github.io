@@ -1,1 +1,70 @@
-// nothing here
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <style>
+        body {
+            background-color: #111;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .game-button {
+            background-color: #333;
+            border: 2px solid #444;
+            padding: 0;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .game-button:hover {
+            background-color: #555;
+        }
+        .game-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-grid">
+    <div class="game-button">
+        <a href="/games/retro-bowl.html">
+            <img src="/retro-bowl/retro-bowl.jfif" alt="Retro Bowl Icon">
+        </a>
+    </div>
+    <div class="game-button">
+        <a href="https://linkto-testgame.com">
+            <img src="https://via.placeholder.com/150" alt="Test Game Icon">
+        </a>
+    </div>
+    <div class="game-button">
+        <a href="https://linkto-testgame2.com">
+            <img src="https://via.placeholder.com/150" alt="Test Game 2 Icon">
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
