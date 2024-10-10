@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Bowl College</title>
+    <title>Retro Bowl</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,11 +50,65 @@
 
         .button-container button:hover {
             color: #ffc700;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+        }
+
+        .header img {
+            max-height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo-text a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+}
+
+.nav-buttons a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
         }
     </style>
 </head>
 <body>
-
+<div class="header">
+        <div class="logo-text">
+            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
+            <a href="/">US4</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="/games">🕹️ Games</a>
+            <a href="/partners">👥 Partners</a>
+            <a href="/extra">➕ Extra</a>
+        </div>
+    </div>
+    <div class="content">
+        <iframe src="/p"></iframe>
+    </div>
 <div class="container">
     <iframe id="game-frame" class="game-iframe" src="https://us4-ubg.github.io/retro-bowl/" allowfullscreen></iframe>
 
