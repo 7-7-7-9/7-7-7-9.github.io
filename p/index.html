@@ -4,56 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
+    <link rel="stylesheet" href="/style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #111;
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            margin: 0;
         }
-        h1 {
-            font-size: 36px;
-            color: #FFF;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
         }
-        h2 {
-            font-size: 24px;
-            color: #DDD;
-            margin-top: 10px;
+        .logo-text img {
+            height: 40px;
+            margin-right: 10px;
         }
-        .image-container {
+        .nav-buttons a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .game-grid {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            padding: 20px 0;
+            flex-direction: column;
+            align-items: center;
         }
-        .image-container img {
+        .game-title {
+            color: gold;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .game-subtitle {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .game-button {
+            background-color: #333;
+            border: 2px solid #444;
+            padding: 0;
+            border-radius: 10px;
             width: 150px;
             height: 150px;
-            object-fit: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            border-radius: 8px;
-            transition: transform 0.2s;
+            transition: background-color 0.3s ease;
         }
-        .image-container img:hover {
-            transform: scale(1.05);
+        .game-button:hover {
+            background-color: #555;
+        }
+        .game-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="logo-text">
+            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
+            <a href="/">US4</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="/games" style="color: gold; font-weight: bold;">🕹️ Games</a>
+            <a href="/partners">👥 Partners</a>
+            <a href="/extra">➕ Extra</a>
+        </div>
+    </div>
 
-    <h1>US4</h1>
-    <h2>This Month's Games</h2>
-
-    <div class="image-container">
-        <a href="/games/retro-bowl.html">
-            <img src="/retro-bowl/retro-bowl.jfif" alt="Image 1">
-        </a>
-        <a href="/games/clusterrush.html">
-            <img src="/clusterrush/clusterrush.png" alt="Image 2">
-        </a>
-        <a href="https://link1">
-            <img src="https://via.placeholder.com/150" alt="Image 3">
-        </a>
+    <div class="game-grid">
+        <div class="game-title">US4</div>
+        <div class="game-subtitle">This Month's Games</div>
+        <div class="game-button">
+            <a href="/games/retro-bowl.html">
+                <img src="/retro-bowl/retro-bowl.jfif" alt="Retro Bowl">
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/clusterrush.html">
+                <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://linkto-testgame2.com">
+                <img src="https://via.placeholder.com/150" alt="Test Game 2">
+            </a>
+        </div>
     </div>
 
 </body>
