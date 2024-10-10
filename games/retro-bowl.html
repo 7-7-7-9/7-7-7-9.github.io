@@ -3,100 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Bowl</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1b1b1b;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .container {
-            border: 2px solid #ffc700;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 800px;
-            background-color: #292929;
-            position: relative;
-        }
-
-        .game-iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .button-container {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-        }
-
-        .button-container button {
-            background-color: #292929;
-            border: none;
-            color: #fff;
-            font-size: 20px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .button-container button:hover {
-            color: #ffc700;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #000;
-            color: white;
-        }
-
-        .header img {
-            max-height: 50px;
-            margin-right: 10px;
-        }
-
-        .header .logo-text {
-            display: flex;
-            align-items: center;
-        }
-
-        .header .logo-text a {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .nav-buttons a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
-
-        .content {
-            flex: 1;
-            overflow: hidden;
-            width: 100%; /* Ensure the content takes full width */
-        }
-
-        .content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+    <title>Home</title>
+ <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
+        <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div class="header">
@@ -104,39 +13,14 @@
             <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
             <a href="/">US4</a>
         </div>
-        <div class="nav-buttons">
-            <a href="/games">🕹️ Games</a>
-            <a href="/partners">👥 Partners</a>
-            <a href="/extra">➕ Extra</a>
-        </div>
+    <div class="nav-buttons">
+        <a href="/games" style="color: gold; font-weight: bold;">🕹️ Games</a>
+        <a href="/partners">👥 Partners</a>
+        <a href="/extra">➕ Extra</a>
+    </div>
     </div>
     <div class="content">
-        <iframe src="/p"></iframe>
+        <iframe src="/p/games/retro-bowl.html"></iframe>
     </div>
-    <div class="container">
-        <iframe id="game-frame" class="game-iframe" src="https://us4-ubg.github.io/retro-bowl/" allowfullscreen></iframe>
-
-        <div class="button-container">
-            <button onclick="refreshGame()">&#x21bb;</button>
-            <button onclick="toggleFullscreen()">&#x26F6;</button>
-        </div>
-    </div>
-
-    <script>
-        function refreshGame() {
-            document.getElementById('game-frame').src = document.getElementById('game-frame').src;
-        }
-
-        function toggleFullscreen() {
-            var iframe = document.getElementById('game-frame');
-            if (!document.fullscreenElement) {
-                iframe.requestFullscreen().catch(err => {
-                    alert(`Error attempting to enable fullscreen mode: ${err.message}`);
-                });
-            } else {
-                document.exitFullscreen();
-            }
-        }
-    </script>
 </body>
 </html>
