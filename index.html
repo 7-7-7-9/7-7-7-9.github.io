@@ -40,6 +40,35 @@
             border: none;
         }
     </style>
+    <script>
+        window.onload = function() {
+            if (window.name !== "about:blank") {
+                var newTab = window.open("about:blank", "_blank");
+                if (newTab) {
+                    newTab.document.write(`
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Embedded Page</title>
+                            <style>
+                                body { margin: 0; }
+                                iframe { width: 100vw; height: 100vh; border: none; }
+                            </style>
+                        </head>
+                        <body>
+                            <iframe src="${window.location.href}"></iframe>
+                        </body>
+                        </html>
+                    `);
+                    newTab.document.close();
+                } else {
+                    alert("Please allow popups for this site.");
+                }
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="header">
