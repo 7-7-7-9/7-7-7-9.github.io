@@ -61,7 +61,7 @@
             text-align: center;
             color: white;
             font-weight: bold;
-            font-size: 36px;
+            font-size: 36px; /* Increased font size */
             margin: 20px 0 10px 0;
         }
         .games-title {
@@ -89,7 +89,7 @@
     </div>
 
     <div class="game-title">Games</div>
-    <div class="games-title">Select from <span id="amountOfGames"></span> games!</div> 
+    <div class="games-title">Select from AMOUNTOFGAMES games!</div> 
 
     <div class="game-grid">
         <div class="game-button">
@@ -109,17 +109,5 @@
         </div>
     </div>
 
-    <script>
-        function updateGameCount() {
-            const gameButtons = document.querySelectorAll('.game-button');
-            const amountOfGames = gameButtons.length;
-            document.getElementById('amountOfGames').textContent = amountOfGames;
-        }
-
-        window.onload = function() {
-            updateGameCount();
-            setInterval(updateGameCount, 5000);
-        };
-    </script>
 </body>
 </html>
