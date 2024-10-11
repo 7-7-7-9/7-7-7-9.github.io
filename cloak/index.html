@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Iframe in New Tab</title>
+    <title>Home</title>
     <script>
         window.onload = function() {
-            window.location.href = 'https://google.classroom.com'; // Redirect the original tab
+            window.location.href = 'https://classroom.google.com'; // Redirect the original tab
 
             const newTab = window.open('about:blank', '_blank');
             const iframe = document.createElement('iframe');
             iframe.src = '/p';
-            iframe.style.width = '100vw'; // Take up the full width
-            iframe.style.height = '100vh'; // Take up the full height
+            iframe.style.width = '101vw';
+            iframe.style.height = '101vh';
             iframe.style.border = 'none';
             newTab.document.body.appendChild(iframe);
         };
