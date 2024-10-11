@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-Cloak</title>
+    <title>Open Iframe in New Tab</title>
     <script>
         window.onload = function() {
+            window.location.href = 'https://google.classroom.com'; // Redirect the original tab
+
             const newTab = window.open('about:blank', '_blank');
             const iframe = document.createElement('iframe');
             iframe.src = '/p';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
+            iframe.style.width = '100vw'; // Take up the full width
+            iframe.style.height = '100vh'; // Take up the full height
             iframe.style.border = 'none';
             newTab.document.body.appendChild(iframe);
         };
