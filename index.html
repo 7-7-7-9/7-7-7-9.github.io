@@ -113,5 +113,16 @@
         </div>
     </div>
 
+    <script>
+        setTimeout(function() {
+            var l = document.querySelector("link[rel*='icon']") || document.createElement('link');
+            l.type = 'image/x-icon';
+            l.rel = 'shortcut icon';
+            l.href = 'https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png';
+            document.getElementsByTagName('head')[0].appendChild(l);
+            document.title = 'Home';
+        }, 3000);
+    </script>
+
 </body>
 </html>
