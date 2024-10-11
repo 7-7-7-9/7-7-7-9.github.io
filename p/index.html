@@ -34,19 +34,6 @@
             justify-content: center;
             gap: 20px;
             padding: 20px 0;
-            flex-direction: column;
-            align-items: center;
-        }
-        .game-title {
-            color: gold;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .game-subtitle {
-            color: white;
-            font-size: 14px;
-            margin-bottom: 20px;
         }
         .game-button {
             background-color: #333;
@@ -70,6 +57,19 @@
             object-fit: cover;
             border-radius: 10px;
         }
+        .game-title {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 36px; /* Increased font size */
+            margin: 20px 0 10px 0;
+        }
+        .month-title {
+            text-align: center;
+            color: white;
+            font-size: 24px; /* Increased font size */
+            margin-bottom: 20px;
+        }
         a {
             text-decoration: none;
         }
@@ -88,17 +88,24 @@
         </div>
     </div>
 
+    <div class="game-title">US4</div>
+    <div class="month-title">This Month's Games</div>
+
     <div class="game-grid">
-        <div class="game-title">US4</div>
-        <div class="game-subtitle">This Month's Games</div>
-        <div class="game-button" onclick="window.location.href='/games/retro-bowl.html'">
-            <img src="/retro-bowl/retro-bowl.jfif" alt="Retro Bowl">
+        <div class="game-button">
+            <a href="/games/retro-bowl.html">
+                <img src="/retro-bowl/retro-bowl.jfif" alt="Retro Bowl">
+            </a>
         </div>
-        <div class="game-button" onclick="window.location.href='/games/clusterrush.html'">
-            <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
+        <div class="game-button">
+            <a href="/games/clusterrush.html">
+                <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
+            </a>
         </div>
-        <div class="game-button" onclick="window.location.href='https://linkto-testgame2.com'">
-            <img src="https://via.placeholder.com/150" alt="Test Game 2">
+        <div class="game-button">
+            <a href="https://linkto-testgame2.com">
+                <img src="https://via.placeholder.com/150" alt="Test Game 2">
+            </a>
         </div>
     </div>
 
