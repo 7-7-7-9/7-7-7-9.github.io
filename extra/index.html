@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
@@ -53,8 +51,70 @@
             <a href="/extra" style="color: gold; font-weight: bold;">➕ Extra</a>
         </div>
     </div>
-    <div class="content">
-        <iframe src="/p/extra.html"></iframe>
+    
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra</title>
+    <style>
+        body {
+            background-color: #111;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+        button {
+            background-color: #ccc;
+            color: black;
+            padding: 15px 30px;
+            margin: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #bbb;
+        }
+        .tip {
+            color: white;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+
+
+    <div class="container">
+        <button onclick="window.open('https://voucan.github.io', '_blank')">About Me</button>
+        <button onclick="window.location.href='https://us4-ubg.github.io/cloak'">Open in About:Blank</button>
+        <button onclick="window.open('https://discord.gg/VDA8Ngx38Z', '_blank')">Join our Discord</button>
+        <button onclick="activateAntiClose()">Anti Close</button>
+        <div class="tip">
+            Tip: You can go to <a href="https://us4-ubg.github.io/cloak" target="_blank" style="color: #DDD;">us4-ubg.github.io/cloak</a> to automatically open US4 in about:blank.
+        </div>
     </div>
-</body>
-</html>
+
+    <script>
+        function internalHandler(e) {
+            e.preventDefault(); 
+            e.returnValue = ""; 
+            return "Anti-Close Active";
+        }
+
+        function activateAntiClose() {
+            if (window.addEventListener) {
+                window.addEventListener('beforeunload', internalHandler, true);
+            } else if (window.attachEvent) {
+                window.attachEvent('onbeforeunload', internalHandler);
+            }
+            alert('Anti Close is now activated.');
+        }
+    </script>
+
+
+
+
+</body></html>
