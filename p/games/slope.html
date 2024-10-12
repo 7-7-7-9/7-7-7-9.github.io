@@ -72,7 +72,9 @@
     function toggleFullscreen() {
         var iframe = document.getElementById('game-frame');
         if (!document.fullscreenElement) {
-            iframe.requestFullscreen().catch(err => {
+            iframe.requestFullscreen().then(() => {
+                refreshGame();
+            }).catch(err => {
                 alert(`Error attempting to enable fullscreen mode: ${err.message}`);
             });
         } else {
