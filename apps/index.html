@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body {
+            background-color: #111;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+        }
+        .logo-text img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .nav-buttons a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .game-button {
+            background-color: #333;
+            border: 2px solid #444;
+            padding: 0;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .game-button:hover {
+            background-color: #555;
+        }
+        .game-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .game-title {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 36px;
+            margin: 20px 0 10px 0;
+        }
+        .games-title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-text">
+            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
+            <a href="/">US4</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="/games" style="color: gold; font-weight: bold;">🕹️ Games</a>
+            <a href="/partners">👥 Partners</a>
+            <a href="/apps">📙 Apps & More</a>
+            <a href="/extra">➕ Extra</a>
+        </div>
+    </div>
+
+    <div class="game-title">Games</div>
+    <div class="games-title">Select from a variety games!</div> 
+
+    <div class="game-grid" id="gameGrid">
+        <div class="game-button">
+            <a href="/apps/discord">
+                <img src="/retro-bowl/retro-bowl.jfif" alt="Retro Bowl">
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/apps/soundbuttons">
+                <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
+            </a>
+        </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function checkGridAlignment() {
+            const gameGrid = document.getElementById('gameGrid');
+            const buttons = document.querySelectorAll('.game-button');
+            const pageWidth = window.innerWidth;
+            
+            buttons.forEach(button => {
+                const rect = button.getBoundingClientRect();
+                const distanceToRightEdge = pageWidth - rect.right;
+                
+             
+                if (distanceToRightEdge < 75) {
+                    button.style.clear = 'both';
+                } else {
+                    button.style.clear = 'none';
+                }
+            });
+        }
+
+    
+        window.addEventListener('resize', checkGridAlignment);
+        window.addEventListener('load', checkGridAlignment);
+    </script>
+</body>
+</html>
