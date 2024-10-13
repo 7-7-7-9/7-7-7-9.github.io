@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K8CCSDNPV3');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
@@ -8,8 +17,10 @@
     <link rel="stylesheet" href="/style.css">
     <style>
         body {
-            margin: 0;
+            background: url('https://i.makeagif.com/media/7-05-2017/EFwjlJ.gif') repeat center center fixed;
+            background-size: 100%;
             font-family: Arial, sans-serif;
+            margin: 0;
         }
         .header {
             display: flex;
@@ -28,16 +39,50 @@
             margin-left: 15px;
             text-decoration: none;
         }
-        .content {
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .game-button {
+            background-color: #333;
+            border: 2px solid #444;
+            padding: 0;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 60px);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        iframe {
+        .game-button:hover {
+            background-color: #555;
+        }
+        .game-button img {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .game-title {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 36px;
+            margin: 20px 0 10px 0;
+        }
+        .games-title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -48,14 +93,58 @@
             <a href="/">US4</a>
         </div>
         <div class="nav-buttons">
-            <a href="/games">🕹️ Games</a>
-            <a href="/partners" style="color: gold; font-weight: bold;">👥 Partners</a>
+            <a href="/games" style="color: gold; font-weight: bold;">🕹️ Games</a>
+            <a href="/partners">👥 Partners</a>
             <a href="/apps">📙 Apps & More</a>
             <a href="/extra">➕ Extra</a>
         </div>
     </div>
-    <div class="content">
-        <iframe src="/p/partners.html"></iframe>
+
+    <div class="game-title">Partners</div>
+    <div class="games-title">Try one of our partner sites!</div> 
+
+    <div class="game-grid" id="gameGrid">
+        <div class="game-button">
+            <a href="https://play.szvy.win/">
+                <img src="https://i.ibb.co/GM0TFjM/szvylogo.png" alt="Szvy Central">
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://brunysixl.xyz/">
+                <img src="https://brunysixl.xyz/thebiw.png" alt="BIW">
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="https://mexismath.web.app">
+                <img src="/SubwaySurfers/subway.jfif" alt="Mexismath">
+            </a>
+        </div>
+            </a>
+        </div>
     </div>
+
+    <script>
+        function checkGridAlignment() {
+            const gameGrid = document.getElementById('gameGrid');
+            const buttons = document.querySelectorAll('.game-button');
+            const pageWidth = window.innerWidth;
+            
+            buttons.forEach(button => {
+                const rect = button.getBoundingClientRect();
+                const distanceToRightEdge = pageWidth - rect.right;
+                
+             
+                if (distanceToRightEdge < 75) {
+                    button.style.clear = 'both';
+                } else {
+                    button.style.clear = 'none';
+                }
+            });
+        }
+
+    
+        window.addEventListener('resize', checkGridAlignment);
+        window.addEventListener('load', checkGridAlignment);
+    </script>
 </body>
 </html>
