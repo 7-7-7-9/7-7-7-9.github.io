@@ -88,54 +88,26 @@
         document.getElementById('websiteForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            let webhookUrl = process.env.Webhook;
-
-            let websiteLink = document.getElementById('websiteLink').value;
-            let websiteVisits = document.getElementById('websiteVisits').value;
-            let gamesCount = document.getElementById('gamesCount').value;
-            let contactInfo = document.getElementById('contactInfo').value;
-
-            let embedData = {
-                embeds: [
-                    {
-                        title: "Partner Applications",
-                        color: 3447003,
-                        fields: [
-                            {
-                                name: "Website Link",
-                                value: websiteLink,
-                                inline: true
-                            },
-                            {
-                                name: "Visits",
-                                value: websiteVisits,
-                                inline: true
-                            },
-                            {
-                                name: "Games",
-                                value: gamesCount,
-                                inline: true
-                            },
-                            {
-                                name: "Contact",
-                                value: contactInfo,
-                                inline: true
-                            }
-                        ],
-                        timestamp: new Date().toISOString()
-                    }
-                ]
+            let formData = {
+                websiteLink: document.getElementById('websiteLink').value,
+                websiteVisits: document.getElementById('websiteVisits').value,
+                gamesCount: document.getElementById('gamesCount').value,
+                contactInfo: document.getElementById('contactInfo').value
             };
 
-            await fetch(webhookUrl, {
+            const response = await fetch('/submit-form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(embedData)
+                body: JSON.stringify(formData)
             });
 
-            alert('Form submitted successfully!');
+            if (response.ok) {
+                alert('Form submitted successfully!');
+            } else {
+                alert('Error submitting the form.');
+            }
         });
     </script>
 </body>
