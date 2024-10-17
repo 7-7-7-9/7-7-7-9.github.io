@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .toggle-button, .preset-button, .upload-section {
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #eee;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Settings Page</h1>
+
+    <div class="container">
+        <div>
+            <h2>Toggle Anti-Close</h2>
+            <button id="toggleBeforeUnload" class="toggle-button">Enable Anti-Close</button>
+        </div>
+
+        <div>
+            <h2>Change Title and Logo</h2>
+            <button class="Test" data-title="Test 1" data-logo="Test">Test 1</button>
+            <button class="Test2" data-title="Test 2" data-logo="Test">Test 2</button>
+            <button class="Test3" data-title="Test 3" data-logo="Test">Test 3</button>
+        </div>
+
+        <div class="upload-section">
+            <h2>Upload Custom Title and Logo</h2>
+            <input type="text" id="customTitle" placeholder="Enter custom title">
+            <input type="file" id="customLogo" accept="image/*">
+            <button id="applyCustomSettings">Apply Custom</button>
+        </div>
+    </div>
+
+    <script>
+
+        const beforeUnloadButton = document.getElementById('toggleBeforeUnload');
+        let beforeUnloadEnabled = localStorage.getItem('beforeUnloadEnabled') === 'true';
+
+        function updateBeforeUnloadButtonText() {
+            beforeUnloadButton.textContent = beforeUnloadEnabled ? 'Disable Anti-Close' : 'Enable Anti-Close';
+        }
+
+        beforeUnloadButton.addEventListener('click', function () {
+            beforeUnloadEnabled = !beforeUnloadEnabled;
+            localStorage.setItem('beforeUnloadEnabled', beforeUnloadEnabled);
+            updateBeforeUnloadButtonText();
+        });
+
+        updateBeforeUnloadButtonText();
+
+
+        document.querySelectorAll('.preset-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const title = button.getAttribute('data-title');
+                const logo = button.getAttribute('data-logo');
+                localStorage.setItem('siteTitle', title);
+                localStorage.setItem('siteLogo', logo);
+                alert(`Title and logo updated to ${title}`);
+            });
+        });
+
+
+        document.getElementById('applyCustomSettings').addEventListener('click', function () {
+            const customTitle = document.getElementById('customTitle').value;
+            const customLogo = document.getElementById('customLogo').files[0];
+
+            if (customTitle) {
+                localStorage.setItem('siteTitle', customTitle);
+            }
+
+            if (customLogo) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    localStorage.setItem('siteLogo', event.target.result);
+                    alert('Custom title and logo applied!');
+                };
+                reader.readAsDataURL(customLogo);
+            }
+        });
+    </script>
+</body>
+</html>
