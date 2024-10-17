@@ -109,56 +109,31 @@
 
         <button id="saveSettings">Save Settings</button>
     </div>
+<script>
 
-    <script>
-        const beforeUnloadToggle = document.getElementById('beforeUnloadToggle');
-        const siteTitleInput = document.getElementById('siteTitle');
-        const siteLogoInput = document.getElementById('siteLogo');
-        const saveSettingsButton = document.getElementById('saveSettings');
-
-        beforeUnloadToggle.checked = localStorage.getItem('beforeUnloadEnabled') === 'true';
-        siteTitleInput.value = localStorage.getItem('siteTitle') || '';
-        
-        const savedLogo = localStorage.getItem('siteLogo');
-        if (savedLogo) {
-            const faviconLink = document.createElement('link');
-            faviconLink.rel = 'icon';
-            faviconLink.href = savedLogo;
-            document.head.appendChild(faviconLink);
-        }
-
-        beforeUnloadToggle.addEventListener('change', function() {
-            localStorage.setItem('beforeUnloadEnabled', beforeUnloadToggle.checked);
+    const beforeUnloadEnabled = localStorage.getItem('beforeUnloadEnabled') === 'true';
+    if (beforeUnloadEnabled) {
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = '';
         });
+    }
 
-        saveSettingsButton.addEventListener('click', function() {
-            const siteTitle = siteTitleInput.value;
-            const siteLogoFile = siteLogoInput.files[0];
 
-            if (siteTitle) {
-                localStorage.setItem('siteTitle', siteTitle);
-            }
+    const savedTitle = localStorage.getItem('siteTitle');
+    if (savedTitle) {
+        document.title = savedTitle;
+    }
 
-            if (siteLogoFile) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const logoUrl = event.target.result;
-                    localStorage.setItem('siteLogo', logoUrl);
-                    const faviconLink = document.createElement('link');
-                    faviconLink.rel = 'icon';
-                    faviconLink.href = logoUrl;
-                    document.head.appendChild(faviconLink);
-                };
-                reader.readAsDataURL(siteLogoFile);
-            }
-        });
-
-        if (beforeUnloadToggle.checked) {
-            window.addEventListener('beforeunload', function(e) {
-                e.preventDefault();
-                e.returnValue = '';
-            });
+    const savedLogo = localStorage.getItem('siteLogo');
+    if (savedLogo) {
+        const logoElement = document.querySelector('link[rel="icon"]'); 
+        if (logoElement) {
+            logoElement.href = savedLogo;
         }
-    </script>
+    }
+</script>
+
+
 </body>
 </html>
