@@ -1,6 +1,4 @@
-<script>
-
-    const beforeUnloadEnabled = localStorage.getItem('beforeUnloadEnabled') === 'true';
+   const beforeUnloadEnabled = localStorage.getItem('beforeUnloadEnabled') === 'true';
     if (beforeUnloadEnabled) {
         window.addEventListener('beforeunload', function (e) {
             e.preventDefault();
@@ -21,4 +19,3 @@
             logoElement.href = savedLogo;
         }
     }
-</script>
