@@ -76,6 +76,13 @@
         .settings-container button:hover {
             background-color: #555;
         }
+        .reset-button {
+            margin-top: 20px;
+            background-color: red;
+        }
+        .reset-button:hover {
+            background-color: darkred;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +115,8 @@
         <input type="file" id="siteLogo" accept="image/*" />
 
         <button id="saveSettings">Save Settings</button>
+
+        <button id="resetSettings" class="reset-button">Reset to Default</button>
     </div>
 
     <script>
@@ -115,7 +124,9 @@
         const siteTitleInput = document.getElementById('siteTitle');
         const siteLogoInput = document.getElementById('siteLogo');
         const saveSettingsButton = document.getElementById('saveSettings');
+        const resetSettingsButton = document.getElementById('resetSettings');
 
+    
         beforeUnloadToggle.checked = localStorage.getItem('beforeUnloadEnabled') === 'true';
         siteTitleInput.value = localStorage.getItem('siteTitle') || '';
         
@@ -127,10 +138,12 @@
             document.head.appendChild(faviconLink);
         }
 
+      
         beforeUnloadToggle.addEventListener('change', function() {
             localStorage.setItem('beforeUnloadEnabled', beforeUnloadToggle.checked);
         });
 
+ 
         saveSettingsButton.addEventListener('click', function() {
             const siteTitle = siteTitleInput.value;
             const siteLogoFile = siteLogoInput.files[0];
@@ -152,6 +165,21 @@
                 reader.readAsDataURL(siteLogoFile);
             }
         });
+
+     
+        resetSettingsButton.addEventListener('click', function() {
+            localStorage.removeItem('siteTitle');
+            localStorage.removeItem('siteLogo');
+            localStorage.removeItem('beforeUnloadEnabled');
+
+  
+            document.title = 'Home';
+            const defaultFaviconLink = document.querySelector('link[rel="icon"]');
+            if (defaultFaviconLink) {
+                defaultFaviconLink.href = '/logo.png';
+            }
+        });
+
 
         if (beforeUnloadToggle.checked) {
             window.addEventListener('beforeunload', function(e) {
