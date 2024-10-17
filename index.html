@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -88,17 +87,48 @@
         a {
             text-decoration: none;
         }
-       /* .visitor-counter {
+
+        .update-log-overlay {
             position: fixed;
-            bottom: 10px;
-            left: 10px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
-            font-size: 12px;
-        } */
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .update-log-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        .update-log-content h2 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .update-log-content p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .blur-content {
+            filter: blur(5px);
+        }
     </style>
 </head>
 <body>
-    <div class="header">
+
+    <div class="header blur-content">
         <div class="logo-text">
             <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
             <a href="/">US4</a>
@@ -111,10 +141,10 @@
         </div>
     </div>
 
-    <div class="game-title">US4</div>
-    <div class="games-title">Play Our Top Games</div> 
+    <div class="game-title blur-content">US4</div>
+    <div class="games-title blur-content">Play Our Top Games</div> 
 
-    <div class="game-grid" id="gameGrid">
+    <div class="game-grid blur-content" id="gameGrid">
         <div class="game-button">
             <a href="/games/retro-bowl">
                 <img src="/retro-bowl/retro-bowl.png" alt="Retro Bowl">
@@ -125,26 +155,31 @@
                 <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
             </a>
         </div>
-            <div class="game-button">
-                <a href="/games/snowrider">
-                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/run3">
-                <img src="/Run-3/Run3.png" alt="Run 3">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/slope">
-                <img src="/Slope/slope.png" alt="Bitlife">
-                </a>
-            </div>
-            </a>
+    </div>
+
+    <div class="update-log-overlay" id="updateLog">
+        <div class="update-log-content">
+            <h2>Update Log</h2>
+<p>Version 1.2: Added Apps page with Discord and Sound Buttons</p>
+<p>Version 1.1: Added more Sport Random games, Paper.io, Snow Rider 3D, and more</p>
+            <p>Version 1: Added Retro Bowl, Cluster Rush, Subway Surfers, and Boxing Random</p>
         </div>
     </div>
 
     <script>
+        document.getElementById('updateLog').addEventListener('click', function() {
+            document.getElementById('updateLog').style.display = 'none';
+            document.querySelectorAll('.blur-content').forEach(function(element) {
+                element.classList.remove('blur-content');
+            });
+        });
+
+        window.onload = function() {
+            document.querySelectorAll('.blur-content').forEach(function(element) {
+                element.classList.add('blur-content');
+            });
+        }
+
         function checkGridAlignment() {
             const gameGrid = document.getElementById('gameGrid');
             const buttons = document.querySelectorAll('.game-button');
@@ -154,7 +189,6 @@
                 const rect = button.getBoundingClientRect();
                 const distanceToRightEdge = pageWidth - rect.right;
                 
-             
                 if (distanceToRightEdge < 75) {
                     button.style.clear = 'both';
                 } else {
@@ -163,9 +197,9 @@
             });
         }
 
-    
         window.addEventListener('resize', checkGridAlignment);
         window.addEventListener('load', checkGridAlignment);
     </script>
+
 </body>
 </html>
