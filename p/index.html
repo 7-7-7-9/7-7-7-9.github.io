@@ -145,9 +145,9 @@
     <div class="games-title blur-content">Play Our Top Games</div> 
 
     <div class="game-grid blur-content" id="gameGrid">
-        <div class="game-button">
-            <a href="/games/retro-bowl">
-                <img src="/retro-bowl/retro-bowl.png" alt="Retro Bowl">
+          <div class="game-button">
+            <a href="/games/holeio">
+                <img src="/hole-io/holeio.png" alt="Hole.io">
             </a>
         </div>
         <div class="game-button">
@@ -155,30 +155,58 @@
                 <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
             </a>
         </div>
+            <div class="game-button">
+                <a href="/games/snowrider">
+                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
+                </a>
+            </div>
+            <div class="game-button">
+                <a href="/games/run3">
+                <img src="/Run-3/Run3.png" alt="Run 3">
+                </a>
+            </div>
+            <div class="game-button">
+                <a href="/games/slope">
+                <img src="/Slope/slope.png" alt="Bitlife">
+                </a>
+            </div>
     </div>
 
     <div class="update-log-overlay" id="updateLog">
         <div class="update-log-content">
             <h2>Update Log</h2>
-<p>Version 1.2: Added Apps page with Discord and Sound Buttons</p>
-<p>Version 1.1: Added more Sport Random games, Paper.io, Snow Rider 3D, and more</p>
+            <p>Version 1.2: Added Apps page with Discord and Sound Buttons</p>
+            <p>Version 1.1: Added more Sport Random games, Paper.io, Snow Rider 3D, and more</p>
             <p>Version 1: Added Retro Bowl, Cluster Rush, Subway Surfers, and Boxing Random</p>
         </div>
     </div>
 
     <script>
+        const currentVersion = "1.2"; // Version
+
+        window.onload = function() {
+            const storedVersion = localStorage.getItem('updateLogVersion');
+
+            if (storedVersion !== currentVersion) {
+                document.getElementById('updateLog').style.display = 'flex';
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.add('blur-content');
+                });
+            } else {
+                document.getElementById('updateLog').style.display = 'none';
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
+            }
+        }
+
         document.getElementById('updateLog').addEventListener('click', function() {
             document.getElementById('updateLog').style.display = 'none';
             document.querySelectorAll('.blur-content').forEach(function(element) {
                 element.classList.remove('blur-content');
             });
+            localStorage.setItem('updateLogVersion', currentVersion);
         });
-
-        window.onload = function() {
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.add('blur-content');
-            });
-        }
 
         function checkGridAlignment() {
             const gameGrid = document.getElementById('gameGrid');
