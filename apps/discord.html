@@ -60,11 +60,39 @@
             <a href="/games">🕹️ Games</a>
             <a href="/partners">👥 Partners</a>
             <a href="/apps" style="color: gold; font-weight: bold;">📙 Apps & More</a>
+            <a href="/settings">⚙️ Settings</a>
             <a href="/extra">➕ Extra</a>
         </div>
     </div>
     <div class="content">
         <iframe src="/apps/discord-embed.html"></iframe>
     </div>
+
+<script>
+
+    const beforeUnloadEnabled = localStorage.getItem('beforeUnloadEnabled') === 'true';
+    if (beforeUnloadEnabled) {
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+    }
+
+
+    const savedTitle = localStorage.getItem('siteTitle');
+    const savedLogo = localStorage.getItem('siteLogo');
+
+    if (savedTitle) {
+        document.title = savedTitle;
+    }
+
+    if (savedLogo) {
+        const logoElement = document.querySelector('.logo-text img'); 
+        if (logoElement) {
+            logoElement.src = savedLogo;
+        }
+    }
+</script>
+
 </body>
 </html>
