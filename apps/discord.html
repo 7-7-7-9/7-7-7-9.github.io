@@ -80,19 +80,19 @@
 
 
     const savedTitle = localStorage.getItem('siteTitle');
-    const savedLogo = localStorage.getItem('siteLogo');
-
     if (savedTitle) {
         document.title = savedTitle;
     }
 
+    const savedLogo = localStorage.getItem('siteLogo');
     if (savedLogo) {
-        const logoElement = document.querySelector('.logo-text img'); 
+        const logoElement = document.querySelector('link[rel="icon"]'); 
         if (logoElement) {
-            logoElement.src = savedLogo;
+            logoElement.href = savedLogo;
         }
     }
 </script>
+
 
 </body>
 </html>
