@@ -1,4 +1,4 @@
-document.addEventListener("NavLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const navButtons = `
         <a href="/games">🕹️ Games</a>
         <a href="/partners" style="color: gold; font-weight: bold;">👥 Partners</a>
