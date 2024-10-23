@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-K8CCSDNPV3');
-</script>
- <meta property="og:title" content="US4">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K8CCSDNPV3');
+    </script>
+    <meta property="og:title" content="US4">
     <meta property="og:description" content="Play unblocked games">
     <meta property="og:image" content="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png">
     <meta name="keywords" content="Unblocked Sites 4, school, slope, geometry, google classroom, college, football, rugby, US4, unblocked games, snowrider, boxing, soccer, volleyball, run 3, subway surfers, paperio, ovo, cluster rush, boxing random, volley random, soccer random, basket random">
@@ -87,7 +86,6 @@
         a {
             text-decoration: none;
         }
-
         .update-log-overlay {
             position: fixed;
             top: 0;
@@ -103,24 +101,20 @@
             font-size: 20px;
             text-align: center;
         }
-
         .update-log-content {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
         }
-
         .update-log-content h2 {
             margin-bottom: 10px;
             font-size: 28px;
         }
-
         .update-log-content p {
             margin-bottom: 20px;
             font-size: 18px;
         }
-
         .blur-content {
             filter: blur(5px);
         }
@@ -143,10 +137,11 @@
     </div>
 
     <div class="game-title blur-content">US4</div>
-    <div class="games-title blur-content">Play Our Top Games</div> 
+    <div class="games-title blur-content">Play Our Top Games</div>
+    <img id="mod" src="" alt="Message of the day" style="display:none; margin: 20px auto; display:block; max-width: 80%;">
 
     <div class="game-grid blur-content" id="gameGrid">
-          <div class="game-button">
+        <div class="game-button">
             <a href="/games/retro-bowl">
                 <img src="/retro-bowl/retro-bowl.png" alt="Retro Bowl">
             </a>
@@ -156,17 +151,17 @@
                 <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
             </a>
         </div>
-            <div class="game-button">
-                <a href="/games/snowrider">
+        <div class="game-button">
+            <a href="/games/snowrider">
                 <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/run3">
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/run3">
                 <img src="/Run-3/Run3.png" alt="Run 3">
-                </a>
-            </div>
-            <div class="game-button">
+            </a>
+        </div>
+        <div class="game-button">
             <a href="/games/holeio">
                 <img src="/hole-io/holeio.png" alt="Hole.io">
             </a>
@@ -182,10 +177,18 @@
 
     <script>
         const currentVersion = "1.4"; // Version
+        const modSrc = 'https://i.ibb.co/g6PqFqq/mod.png';
 
         window.onload = function() {
-            const storedVersion = localStorage.getItem('updateLogVersion');
+            const mod = document.getElementById('mod');
+            if (modSrc) {
+                mod.src = modSrc;
+                mod.style.display = 'block'; 
+            } else {
+                mod.style.display = 'none';
+            }
 
+            const storedVersion = localStorage.getItem('updateLogVersion');
             if (storedVersion !== currentVersion) {
                 document.getElementById('updateLog').style.display = 'flex';
                 document.querySelectorAll('.blur-content').forEach(function(element) {
@@ -206,26 +209,6 @@
             });
             localStorage.setItem('updateLogVersion', currentVersion);
         });
-
-        function checkGridAlignment() {
-            const gameGrid = document.getElementById('gameGrid');
-            const buttons = document.querySelectorAll('.game-button');
-            const pageWidth = window.innerWidth;
-            
-            buttons.forEach(button => {
-                const rect = button.getBoundingClientRect();
-                const distanceToRightEdge = pageWidth - rect.right;
-                
-                if (distanceToRightEdge < 75) {
-                    button.style.clear = 'both';
-                } else {
-                    button.style.clear = 'none';
-                }
-            });
-        }
-
-        window.addEventListener('resize', checkGridAlignment);
-        window.addEventListener('load', checkGridAlignment);
     </script>
     <script type="text/javascript" src="/settings/settings.js"></script>
 
