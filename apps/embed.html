@@ -89,7 +89,7 @@
     <div class="content">
         <div id="inputContainer">
             <input type="text" id="linkInput" placeholder="Enter a link" value="https://us4-ubg.github.io">
-            <button onclick="loadGame()">Load Game</button>
+            <button onclick="loadFrame()">Load Frame</button>
         </div>
         <iframe id="gameFrame" src="/p/games?url=/404"></iframe>
     </div>
@@ -97,7 +97,7 @@
     <script type="text/javascript" src="/settings/settings.js"></script>
     
     <script>
-        function loadGame() {
+        function loadFrame() {
             let inputLink = document.getElementById('linkInput').value;
             let iframe = document.getElementById('gameFrame');
             iframe.src = '/p/games?url=' + encodeURIComponent(inputLink);
