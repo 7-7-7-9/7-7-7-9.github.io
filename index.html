@@ -18,7 +18,7 @@
     <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
     <link rel="stylesheet" href="/style.css">
     <style>
-        body {
+body {
             background: url('/bg.gif') repeat center center fixed;
             background-size: 100%;
             font-family: Arial, sans-serif;
@@ -52,7 +52,6 @@
             position: relative;
             background-color: #333;
             border: 2px solid #444;
-            padding: 0;
             border-radius: 10px;
             width: 150px;
             height: 150px;
@@ -60,16 +59,35 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .game-button:hover {
-            background-color: #555;
+            overflow: hidden;
         }
         .game-button img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+        .game-button:hover img {
+            opacity: 0.3;
+        }
+        .overlay-text {
+            position: absolute;
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1; 
+            width: 100%; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+        .game-button:hover .overlay-text {
+            opacity: 1; 
         }
         .game-title {
             text-align: center;
@@ -232,29 +250,19 @@
 
         document.getElementById('updateLog').addEventListener('click', function() {
             document.getElementById('updateLog').style.display = 'none';
-            localStorage.setItem('updateLogVersion', currentVersion);
             document.querySelectorAll('.blur-content').forEach(function(element) {
                 element.classList.remove('blur-content');
             });
+            localStorage.setItem('updateLogVersion', currentVersion); 
         });
 
-        const gameGrid = document.getElementById('gameGrid');
-        gameGrid.addEventListener('mouseover', function(event) {
-            if (event.target.closest('.game-button')) {
-                const overlay = event.target.closest('.game-button').querySelector('.game-overlay');
-                if (overlay) {
-                    overlay.style.opacity = '1';
-                }
-            }
-        });
-
-        gameGrid.addEventListener('mouseout', function(event) {
-            if (event.target.closest('.game-button')) {
-                const overlay = event.target.closest('.game-button').querySelector('.game-overlay');
-                if (overlay) {
-                    overlay.style.opacity = '0';
-                }
-            }
+   
+        document.querySelectorAll('.game-button a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
+            });
         });
     </script>
 </body>
