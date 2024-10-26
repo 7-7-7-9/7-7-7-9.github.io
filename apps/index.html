@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/style.css">
     <style>
         body {
-            background: url('/bg.gif') repeat center center fixed;
+            background: url('https://i.makeagif.com/media/7-05-2017/EFwjlJ.gif') repeat center center fixed;
             background-size: 100%;
             font-family: Arial, sans-serif;
             margin: 0;
@@ -47,9 +47,9 @@
             padding: 20px 0;
         }
         .game-button {
+            position: relative;
             background-color: #333;
             border: 2px solid #444;
-            padding: 0;
             border-radius: 10px;
             width: 150px;
             height: 150px;
@@ -57,16 +57,35 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .game-button:hover {
-            background-color: #555;
+            overflow: hidden;
         }
         .game-button img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+        .game-button:hover img {
+            opacity: 0.3;
+        }
+        .overlay-text {
+            position: absolute;
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1; 
+            width: 100%; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+        .game-button:hover .overlay-text {
+            opacity: 1; 
         }
         .game-title {
             text-align: center;
@@ -75,10 +94,17 @@
             font-size: 36px;
             margin: 20px 0 10px 0;
         }
+        .games-title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
         a {
             text-decoration: none;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div class="header">
@@ -97,21 +123,25 @@
         <div class="game-button">
             <a href="/apps/discord">
                 <img src="/apps/discord.png" alt="Discord">
+                <div class="overlay-text">Discord</div>
             </a>
         </div>
         <div class="game-button">
             <a href="/apps/ai">
-                <img src="/apps/ai.png" alt="Groq">
+                <img src="/apps/ai.png" alt="AI">
+                <div class="overlay-text">AI</div>
             </a>
         </div>
         <div class="game-button">
             <a href="/apps/soundbuttons">
                 <img src="/apps/soundbutton.jfif" alt="Sound Buttons">
+                <div class="overlay-text">Sound Buttons</div>
             </a>
         </div>
         <div class="game-button">
             <a href="/apps/embed">
                 <img src="/apps/embed.png" alt="Embed Sites">
+                <div class="overlay-text">Embed Sites</div>
             </a>
         </div>
             </a>
