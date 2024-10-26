@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-K8CCSDNPV3');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K8CCSDNPV3');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
@@ -49,7 +49,6 @@
             position: relative;
             background-color: #333;
             border: 2px solid #444;
-            padding: 0;
             border-radius: 10px;
             width: 150px;
             height: 150px;
@@ -75,12 +74,17 @@
             font-family: 'Comfortaa', sans-serif;
             font-size: 18px;
             text-align: center;
-            opacity: 0;
+            opacity: 0; /* Start hidden */
             transition: opacity 0.3s ease;
             pointer-events: none;
+            z-index: 1; /* Ensure overlay text appears above image */
+            width: 100%; /* Ensure the text is centered */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust position to center */
         }
         .game-button:hover .overlay-text {
-            opacity: 1;
+            opacity: 1; /* Show overlay text on hover */
         }
         .game-title {
             text-align: center;
@@ -126,7 +130,7 @@
     </div>
 
     <div class="game-title">Games</div>
-    <div class="games-title">Select from a variety games!</div> 
+    <div class="games-title">Select from a variety of games!</div> 
 
     <div class="search-bar-container">
         <input type="text" id="gameSearch" class="search-bar" placeholder="Search for a game..." oninput="filterGames()">
@@ -235,28 +239,18 @@
         function filterGames() {
             const searchInput = document.getElementById('gameSearch').value.toLowerCase();
             const games = document.querySelectorAll('.game-button');
+
             games.forEach(game => {
-                const gameTitle = game.querySelector('img').alt.toLowerCase();
-                game.style.display = gameTitle.includes(searchInput) ? 'flex' : 'none';
-            });
-        }
-        function checkGridAlignment() {
-            const gameGrid = document.getElementById('gameGrid');
-            const buttons = document.querySelectorAll('.game-button');
-            const pageWidth = window.innerWidth;
-            buttons.forEach(button => {
-                const rect = button.getBoundingClientRect();
-                const distanceToRightEdge = pageWidth - rect.right;
-                if (distanceToRightEdge < 75) {
-                    button.style.clear = 'both';
+                const gameTitle = game.querySelector('.overlay-text').textContent.toLowerCase();
+                if (gameTitle.includes(searchInput)) {
+                    game.style.display = 'block';
                 } else {
-                    button.style.clear = 'none';
+                    game.style.display = 'none';
                 }
             });
         }
-        window.addEventListener('resize', checkGridAlignment);
-        window.addEventListener('load', checkGridAlignment);
     </script>
+
     <script type="text/javascript" src="/settings/settings.js"></script>
 </body>
 </html>
