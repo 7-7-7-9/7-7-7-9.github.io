@@ -41,6 +41,36 @@
             margin-left: 15px;
             text-decoration: none;
         }
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .game-button {
+            position: relative;
+            background-color: #333;
+            border: 2px solid #444;
+            padding: 0;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .game-button:hover {
+            background-color: #555;
+        }
+        .game-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
         .game-title {
             text-align: center;
             color: white;
@@ -89,7 +119,28 @@
         .blur-content {
             filter: blur(5px);
         }
+        .game-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-family: 'Comfortaa', sans-serif; 
+            font-weight: bold; 
+            opacity: 0;
+            background: rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+        .game-button:hover .game-overlay {
+            opacity: 1; 
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet"> 
 </head>
 <body>
 
@@ -109,6 +160,39 @@
 
     <div class="game-title blur-content">US4</div>
     <div class="games-title blur-content">Play Our Top Games</div>
+
+    <div class="game-grid blur-content" id="gameGrid">
+        <div class="game-button">
+            <a href="/games/retro-bowl">
+                <img src="/retro-bowl/retro-bowl.png" alt="Retro Bowl">
+                <div class="game-overlay">Retro Bowl</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/subwaysurfers">
+                <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
+                <div class="game-overlay">Subway Surfers</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/snowrider">
+                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
+                <div class="game-overlay">Snow Rider 3D</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/run3">
+                <img src="/Run-3/Run3.png" alt="Run 3">
+                <div class="game-overlay">Run 3</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/holeio">
+                <img src="/hole-io/holeio.png" alt="Hole.io">
+                <div class="game-overlay">Hole.io</div>
+            </a>
+        </div>
+    </div>
 
     <img id="mod" src="" alt="Message of the day" style="display:none; margin: 5px auto; display:block; max-width: 80%;">
 
@@ -151,10 +235,17 @@
             document.querySelectorAll('.blur-content').forEach(function(element) {
                 element.classList.remove('blur-content');
             });
-            localStorage.setItem('updateLogVersion', currentVersion);
+            localStorage.setItem('updateLogVersion', currentVersion); 
+        });
+
+   
+        document.querySelectorAll('.game-button a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
+            });
         });
     </script>
-    <script type="text/javascript" src="/settings/settings.js"></script>
-
 </body>
 </html>
