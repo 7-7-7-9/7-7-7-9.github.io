@@ -232,19 +232,29 @@
 
         document.getElementById('updateLog').addEventListener('click', function() {
             document.getElementById('updateLog').style.display = 'none';
+            localStorage.setItem('updateLogVersion', currentVersion);
             document.querySelectorAll('.blur-content').forEach(function(element) {
                 element.classList.remove('blur-content');
             });
-            localStorage.setItem('updateLogVersion', currentVersion); 
         });
 
-   
-        document.querySelectorAll('.game-button a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.blur-content').forEach(function(element) {
-                    element.classList.remove('blur-content');
-                });
-            });
+        const gameGrid = document.getElementById('gameGrid');
+        gameGrid.addEventListener('mouseover', function(event) {
+            if (event.target.closest('.game-button')) {
+                const overlay = event.target.closest('.game-button').querySelector('.game-overlay');
+                if (overlay) {
+                    overlay.style.opacity = '1';
+                }
+            }
+        });
+
+        gameGrid.addEventListener('mouseout', function(event) {
+            if (event.target.closest('.game-button')) {
+                const overlay = event.target.closest('.game-button').querySelector('.game-overlay');
+                if (overlay) {
+                    overlay.style.opacity = '0';
+                }
+            }
         });
     </script>
 </body>
