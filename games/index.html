@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-K8CCSDNPV3');
 </script>
     <meta charset="UTF-8">
@@ -84,6 +82,20 @@
         a {
             text-decoration: none;
         }
+        .search-bar-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 2px solid #444;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +111,10 @@
 
     <div class="game-title">Games</div>
     <div class="games-title">Select from a variety games!</div> 
+
+    <div class="search-bar-container">
+        <input type="text" id="gameSearch" class="search-bar" placeholder="Search for a game..." oninput="filterGames()">
+    </div>
 
     <div class="game-grid" id="gameGrid">
         <div class="game-button">
@@ -187,16 +203,21 @@
     </div>
 
     <script>
+        function filterGames() {
+            const searchInput = document.getElementById('gameSearch').value.toLowerCase();
+            const games = document.querySelectorAll('.game-button');
+            games.forEach(game => {
+                const gameTitle = game.querySelector('img').alt.toLowerCase();
+                game.style.display = gameTitle.includes(searchInput) ? 'flex' : 'none';
+            });
+        }
         function checkGridAlignment() {
             const gameGrid = document.getElementById('gameGrid');
             const buttons = document.querySelectorAll('.game-button');
             const pageWidth = window.innerWidth;
-            
             buttons.forEach(button => {
                 const rect = button.getBoundingClientRect();
                 const distanceToRightEdge = pageWidth - rect.right;
-                
-             
                 if (distanceToRightEdge < 75) {
                     button.style.clear = 'both';
                 } else {
@@ -204,12 +225,9 @@
                 }
             });
         }
-
-    
         window.addEventListener('resize', checkGridAlignment);
         window.addEventListener('load', checkGridAlignment);
     </script>
     <script type="text/javascript" src="/settings/settings.js"></script>
-
 </body>
 </html>
