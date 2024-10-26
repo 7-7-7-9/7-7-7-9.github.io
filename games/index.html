@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <style>
         body {
@@ -45,6 +46,7 @@
             padding: 20px 0;
         }
         .game-button {
+            position: relative;
             background-color: #333;
             border: 2px solid #444;
             padding: 0;
@@ -55,16 +57,30 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .game-button:hover {
-            background-color: #555;
+            overflow: hidden;
         }
         .game-button img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+        .game-button:hover img {
+            opacity: 0.3;
+        }
+        .overlay-text {
+            position: absolute;
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .game-button:hover .overlay-text {
+            opacity: 1;
         }
         .game-title {
             text-align: center;
@@ -105,7 +121,7 @@
             <a href="/">US4</a>
         </div>
         <div class="nav-buttons">
-     <script type="text/javascript" src="/nav-bars/nav-games.js"></script>
+            <script type="text/javascript" src="/nav-bars/nav-games.js"></script>
         </div>
     </div>
 
@@ -120,84 +136,97 @@
         <div class="game-button">
             <a href="/games/retro-bowl">
                 <img src="/retro-bowl/retro-bowl.png" alt="Retro Bowl">
+                <div class="overlay-text">Retro Bowl</div>
             </a>
         </div>
         <div class="game-button">
             <a href="/games/clusterrush">
                 <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
+                <div class="overlay-text">Cluster Rush</div>
             </a>
         </div>
         <div class="game-button">
             <a href="/games/subwaysurfers">
                 <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
+                <div class="overlay-text">Subway Surfers</div>
             </a>
         </div>
         <div class="game-button">
             <a href="/games/boxingrandom">
                 <img src="/Boxing-Random/boxingrandom.jfif" alt="Boxing Random">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/soccerrandom">
-                <img src="/SoccerRandom2/soccerrandom.jfif" alt="Soccer Random">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/basketrandom">
-                <img src="/basketrandom/basketrandom.jfif" alt="Basket Random">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/volleyrandom">
-                <img src="/volleyrandom/volleyrandom.jfif" alt="Volley Random">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/paperio">
-                <img src="/games-repo/paper-io-2/paperio.jfif" alt="Paper.io">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/snowrider">
-                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/holeio">
-                <img src="/hole-io/holeio.png" alt="Hole.io">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/run3">
-                <img src="/Run-3/Run3.png" alt="Run 3">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/ovo">
-                <img src="/OvO/OvO.jfif" alt="OvO">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/bitlife">
-                <img src="/bitlife/logo.png" alt="Bitlife">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/slope">
-                <img src="/Slope/slope.png" alt="Slope">
-                </a>
-            </div>
+                <div class="overlay-text">Boxing Random</div>
             </a>
-            <div class="game-button">
-                <a href="/games/doom">
+        </div>
+        <div class="game-button">
+            <a href="/games/soccerrandom">
+                <img src="/SoccerRandom2/soccerrandom.jfif" alt="Soccer Random">
+                <div class="overlay-text">Soccer Random</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/basketrandom">
+                <img src="/basketrandom/basketrandom.jfif" alt="Basket Random">
+                <div class="overlay-text">Basket Random</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/volleyrandom">
+                <img src="/volleyrandom/volleyrandom.jfif" alt="Volley Random">
+                <div class="overlay-text">Volley Random</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/paperio">
+                <img src="/games-repo/paper-io-2/paperio.jfif" alt="Paper.io">
+                <div class="overlay-text">Paper.io</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/snowrider">
+                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
+                <div class="overlay-text">Snow Rider 3D</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/holeio">
+                <img src="/hole-io/holeio.png" alt="Hole.io">
+                <div class="overlay-text">Hole.io</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/run3">
+                <img src="/Run-3/Run3.png" alt="Run 3">
+                <div class="overlay-text">Run 3</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/ovo">
+                <img src="/OvO/OvO.jfif" alt="OvO">
+                <div class="overlay-text">OvO</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/bitlife">
+                <img src="/bitlife/logo.png" alt="Bitlife">
+                <div class="overlay-text">Bitlife</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/slope">
+                <img src="/Slope/slope.png" alt="Slope">
+                <div class="overlay-text">Slope</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/doom">
                 <img src="/webDOOM/doom.png" alt="Doom">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/flappybird">
+                <div class="overlay-text">Doom</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/flappybird">
                 <img src="/Flappybird/flap.png" alt="Flappy Bird">
-                </a>
-            </div>
+                <div class="overlay-text">Flappy Bird</div>
             </a>
         </div>
     </div>
