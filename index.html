@@ -192,6 +192,7 @@ body {
         </div>
     </div>
 
+    <img id="mod" src="" alt="Message of the day" style="display:none; margin: 5px auto; display:block; max-width: 80%;">
 
     <div class="update-log-overlay" id="updateLog">
         <div class="update-log-content">
@@ -204,6 +205,7 @@ body {
 
     <script>
         const currentVersion = "1.42"; // Version
+            }
 
             const storedVersion = localStorage.getItem('updateLogVersion');
             if (storedVersion !== currentVersion) {
