@@ -192,7 +192,6 @@ body {
         </div>
     </div>
 
-    <img id="mod" src="" alt="Message of the day" style="display:none; margin: 5px auto; display:block; max-width: 80%;">
 
     <div class="update-log-overlay" id="updateLog">
         <div class="update-log-content">
@@ -205,16 +204,6 @@ body {
 
     <script>
         const currentVersion = "1.42"; // Version
-        const modSrc = 'https://i.ibb.co/g6PqFqq/mod.png';
-
-        window.onload = function() {
-            const mod = document.getElementById('mod');
-            if (modSrc) {
-                mod.src = modSrc;
-                mod.style.display = 'block'; 
-            } else {
-                mod.style.display = 'none';
-            }
 
             const storedVersion = localStorage.getItem('updateLogVersion');
             if (storedVersion !== currentVersion) {
