@@ -159,7 +159,7 @@
     </div>
 
     <div class="game-title blur-content">US4</div>
-    <div class="games-title blur-content" id="dynamicMessage"></div>
+    <div class="games-title blur-content" id="randomMessage"></div>
 
     <div class="game-grid blur-content" id="gameGrid">
         <div class="game-button">
@@ -205,22 +205,8 @@
 
     <script>
         const currentVersion = "1.42"; 
-        const messages = [
-            "Deport Brunys",
-            "Batman was playing paper.io",
-            "If your here you probably don't have any A's",
-            "Thank you for using US4",
-            "you probably used ai for your essay"
-        ];
-
-        function setRandomMessage() {
-            const messageElement = document.getElementById('dynamicMessage');
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            messageElement.innerText = messages[randomIndex];
-        }
 
         window.onload = function() {
-            setRandomMessage();
             const storedVersion = localStorage.getItem('updateLogVersion');
             if (storedVersion !== currentVersion) {
                 document.getElementById('updateLog').style.display = 'flex';
@@ -233,19 +219,32 @@
                     element.classList.remove('blur-content');
                 });
             }
-        }
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('randomMessage').textContent = randomMessage;
+        };
 
         document.getElementById('updateLog').addEventListener('click', function() {
             const updateLog = document.getElementById('updateLog');
             updateLog.style.opacity = '0';
             setTimeout(function() {
                 updateLog.style.display = 'none';
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
             }, 500);
-            localStorage.setItem('updateLogVersion', currentVersion);
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.remove('blur-content');
+            localStorage.setItem('updateLogVersion', currentVersion); 
+        });
+
+        document.querySelectorAll('.game-button a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
             });
         });
     </script>
+    <script src="/messages.js"></script>
+    <script type="text/javascript" src="/settings/settings.js"></script>
 </body>
 </html>
