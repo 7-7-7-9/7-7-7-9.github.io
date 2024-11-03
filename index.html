@@ -96,13 +96,11 @@
             font-size: 36px;
             margin: 20px 0 10px 0;
         }
-        .messages-container {
+        .games-title {
             text-align: center;
             color: white;
             font-size: 24px;
             margin-bottom: 20px;
-            opacity: 0;
-            transition: opacity 0.1s ease;
         }
         a {
             text-decoration: none;
@@ -161,11 +159,7 @@
     </div>
 
     <div class="game-title blur-content">US4</div>
-    <div class="messages-container blur-content" id="messages">
-        <div class="message">Thank you for using US4</div>
-        <div class="message" style="display: none;">Suggest games in our discord</div>
-w
-    </div>
+    <div class="games-title blur-content">Play Our Top Games</div>
 
     <div class="game-grid blur-content" id="gameGrid">
         <div class="game-button">
@@ -225,19 +219,17 @@ w
                     element.classList.remove('blur-content');
                 });
             }
-
-            cycleMessages();
         }
 
         document.getElementById('updateLog').addEventListener('click', function() {
             const updateLog = document.getElementById('updateLog');
-            updateLog.style.opacity = '0'; 
-            setTimeout(() => {
-                updateLog.style.display = 'none'; 
-            }, 500); 
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.remove('blur-content');
-            });
+            updateLog.style.opacity = '0';
+            setTimeout(function() {
+                updateLog.style.display = 'none';
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
+            }, 500);
             localStorage.setItem('updateLogVersion', currentVersion); 
         });
 
@@ -248,28 +240,6 @@ w
                 });
             });
         });
-
-        function cycleMessages() {
-            const messages = document.querySelectorAll('.messages-container .message');
-            let currentMessageIndex = 0;
-
-            function showMessage(index) {
-                messages[index].style.display = 'block';
-                setTimeout(() => {
-                    messages[index].style.opacity = '1';
-                }, 10);
-                setTimeout(() => {
-                    messages[index].style.opacity = '0';
-                    setTimeout(() => {
-                        messages[index].style.display = 'none';
-                        currentMessageIndex = (index + 1) % messages.length;
-                        showMessage(currentMessageIndex);
-                    }, 100); 
-                }, 3000); 
-            }
-
-            showMessage(currentMessageIndex);
-        }
     </script>
     <script type="text/javascript" src="/settings/settings.js"></script>
 </body>
