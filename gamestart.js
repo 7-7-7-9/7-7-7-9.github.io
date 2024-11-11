@@ -14,6 +14,7 @@ window.addEventListener("load", function() {
     loadingScreen.style.backgroundSize = "cover";
     loadingScreen.style.color = "gold";
     loadingScreen.style.zIndex = "1000";
+    loadingScreen.style.fontFamily = "'Comfortaa', cursive";
 
     const logo = document.createElement("img");
     logo.src = "https://us4-ubg.github.io/logo.png";
@@ -67,3 +68,8 @@ window.addEventListener("load", function() {
         }
     }, 30);
 });
+
+const fontLink = document.createElement("link");
+fontLink.rel = "stylesheet";
+fontLink.href = "https://fonts.googleapis.com/css2?family=Comfortaa&display=swap";
+document.head.appendChild(fontLink);
