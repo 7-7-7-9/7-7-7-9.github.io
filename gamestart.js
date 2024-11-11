@@ -28,6 +28,13 @@ window.addEventListener("load", function() {
     text.style.fontWeight = "bold";
     loadingScreen.appendChild(text);
 
+    const tipText = document.createElement("p");
+    tipText.textContent = "(If your game does not load correctly try using the site outside of about:blank. If that doesn't work contact me on discord - @voucan)";
+    tipText.style.fontSize = "18px";
+    tipText.style.fontWeight = "normal";
+    tipText.style.marginTop = "10px";
+    loadingScreen.appendChild(tipText);
+
     const progressBarContainer = document.createElement("div");
     progressBarContainer.style.width = "80%";
     progressBarContainer.style.height = "30px";
@@ -45,13 +52,13 @@ window.addEventListener("load", function() {
 
     document.body.appendChild(loadingScreen);
 
-    let dotCount = 3;
-    const maxDots = 3;
+    let loadingdots = 3;
+    const loadingdotsmax = 3;
 
     const dotInterval = setInterval(() => {
-        text.textContent = "Loading" + ".".repeat(dotCount);
-        dotCount--;
-        if (dotCount < 1) dotCount = maxDots;
+        text.textContent = "Loading" + ".".repeat(loadingdots);
+        loadingdots--;
+        if (loadingdots < 1) loadingdots = loadingdotsmax;
     }, 500);
 
     let progress = 0;
