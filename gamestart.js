@@ -64,7 +64,7 @@ window.addEventListener("load", function() {
             clearInterval(dotInterval);
             setTimeout(() => {
                 loadingScreen.remove();
-            }, 500);
+            }, 1);
         }
     }, 30);
 });
