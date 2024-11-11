@@ -1,51 +1,69 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const messageDiv = document.createElement("div");
-    messageDiv.id = "messageDiv";
-    messageDiv.style.position = "fixed";
-    messageDiv.style.top = "0";
-    messageDiv.style.left = "0";
-    messageDiv.style.width = "100%";
-    messageDiv.style.height = "100%";
-    messageDiv.style.display = "flex";
-    messageDiv.style.flexDirection = "column";
-    messageDiv.style.justifyContent = "center";
-    messageDiv.style.alignItems = "center";
-    messageDiv.style.backgroundImage = "url('/bg.gif')";
-    messageDiv.style.backgroundSize = "cover";
-    messageDiv.style.color = "gold";
-    messageDiv.style.zIndex = "1000";
+window.addEventListener("load", function() {
+    const loadingScreen = document.createElement("div");
+    loadingScreen.id = "loadingScreen";
+    loadingScreen.style.position = "fixed";
+    loadingScreen.style.top = "0";
+    loadingScreen.style.left = "0";
+    loadingScreen.style.width = "100%";
+    loadingScreen.style.height = "100%";
+    loadingScreen.style.display = "flex";
+    loadingScreen.style.flexDirection = "column";
+    loadingScreen.style.justifyContent = "center";
+    loadingScreen.style.alignItems = "center";
+    loadingScreen.style.backgroundImage = "url('https://us4-ubg.github.io/bg.gif')";
+    loadingScreen.style.backgroundSize = "cover";
+    loadingScreen.style.color = "gold";
+    loadingScreen.style.zIndex = "1000";
 
     const logo = document.createElement("img");
     logo.src = "https://us4-ubg.github.io/logo.png";
     logo.style.maxWidth = "150px";
     logo.style.marginBottom = "20px";
-    messageDiv.appendChild(logo);
+    loadingScreen.appendChild(logo);
 
     const text = document.createElement("p");
-    text.textContent = "Thank you for using US4";
+    text.textContent = "Loading";
     text.style.fontSize = "32px";
     text.style.fontWeight = "bold";
-    messageDiv.appendChild(text);
+    loadingScreen.appendChild(text);
 
-    const countdown = document.createElement("div");
-    countdown.id = "countdown";
-    countdown.style.marginTop = "10px";
-    countdown.style.fontSize = "24px";
-    countdown.style.fontWeight = "bold";
-    messageDiv.appendChild(countdown);
+    const progressBarContainer = document.createElement("div");
+    progressBarContainer.style.width = "80%";
+    progressBarContainer.style.height = "30px";
+    progressBarContainer.style.border = "2px solid gold";
+    progressBarContainer.style.marginTop = "20px";
+    progressBarContainer.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
+    progressBarContainer.style.position = "relative";
+    loadingScreen.appendChild(progressBarContainer);
 
-    document.body.appendChild(messageDiv);
+    const progressBar = document.createElement("div");
+    progressBar.style.height = "100%";
+    progressBar.style.width = "0%";
+    progressBar.style.backgroundColor = "gold";
+    progressBarContainer.appendChild(progressBar);
 
-    let timeLeft = 3;
-    countdown.textContent = `Start playing in ${timeLeft} seconds`;
+    document.body.appendChild(loadingScreen);
 
-    const timer = setInterval(() => {
-        timeLeft -= 1;
-        countdown.textContent = `Start playing in ${timeLeft} seconds`;
+    let dotCount = 3;
+    const maxDots = 3;
 
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            messageDiv.remove();
+    const dotInterval = setInterval(() => {
+        text.textContent = "Loading" + ".".repeat(dotCount);
+        dotCount--;
+        if (dotCount < 1) dotCount = maxDots;
+    }, 500);
+
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+        if (progress < 100) {
+            progress += 1;
+            progressBar.style.width = `${progress}%`;
+        } else {
+            clearInterval(progressInterval);
+            clearInterval(dotInterval);
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 500);
         }
-    }, 1000);
+    }, 30);
 });
