@@ -33,6 +33,8 @@ window.addEventListener("load", function() {
     tipText.style.fontSize = "18px";
     tipText.style.fontWeight = "normal";
     tipText.style.marginTop = "10px";
+    tipText.style.textAlign = "center";
+    tipText.style.maxWidth = "80%";
     loadingScreen.appendChild(tipText);
 
     const progressBarContainer = document.createElement("div");
