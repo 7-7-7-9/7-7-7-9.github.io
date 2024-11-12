@@ -73,7 +73,7 @@ window.addEventListener("load", function() {
             clearInterval(dotInterval);
             setTimeout(() => {
                 loadingScreen.remove();
-            }, 1);
+            }, 500);
         }
     }, 30);
 });
