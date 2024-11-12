@@ -49,8 +49,11 @@
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             margin: 50px auto;
-            max-width: 400px;
+            width: 100%;
+            max-width: 500px;
             box-sizing: border-box;
+            height: auto;
+            overflow-y: auto;
         }
         .settings-container h1 {
             color: gold;
@@ -75,6 +78,7 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            width: 100%;
         }
         .settings-container button:hover {
             background-color: #555;
@@ -193,7 +197,7 @@
         resetSettingsButton.addEventListener('click', function() {
             localStorage.removeItem('siteTitle');
             localStorage.removeItem('siteLogo');
-            document.title = 'US4 - Settings';
+            document.title = 'Home';
             const defaultFaviconLink = document.querySelector('link[rel="icon"]');
             if (defaultFaviconLink) {
                 defaultFaviconLink.href = 'https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png';
