@@ -50,6 +50,7 @@
             border-radius: 10px;
             margin: 50px auto;
             max-width: 400px;
+            box-sizing: border-box;
         }
         .settings-container h1 {
             color: gold;
@@ -64,6 +65,7 @@
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         .settings-container button {
             padding: 10px;
@@ -93,7 +95,7 @@
             <a href="/">US4</a>
         </div>
         <div class="nav-buttons">
-     <script type="text/javascript" src="/nav-bars/nav-settings.js"></script>
+            <script type="text/javascript" src="/nav-bars/nav-settings.js"></script>
         </div>
     </div>
 
@@ -111,21 +113,39 @@
         <label for="siteLogo">Set Site Favicon:</label>
         <input type="file" id="siteLogo" accept="image/*" />
 
-        <button id="saveSettings">Save Settings</button>
+        <button id="saveSettings">Save General Settings</button>
 
-        <button id="resetSettings" class="reset-button">Reset ALL Settings to Default</button>
+        <hr>
+
+        <label for="panicKey">Set Panic Button Key:</label>
+        <input type="text" id="panicKey" placeholder="Enter key (e.g., F1)" />
+
+        <label for="panicUrl">Set Panic Button URL:</label>
+        <input type="text" id="panicUrl" placeholder="Enter URL to redirect to" />
+
+        <button id="savePanicButtonSettings">Save Panic Button Settings</button>
+
+        <hr>
+
+        <button id="resetSettings" class="reset-button">Reset Tab Name and Icon</button>
+        <button id="resetPanicButtonSettings" class="reset-button">Reset Panic Button Settings</button>
     </div>
 
     <script>
         const beforeUnloadToggle = document.getElementById('beforeUnloadToggle');
         const siteTitleInput = document.getElementById('siteTitle');
         const siteLogoInput = document.getElementById('siteLogo');
+        const panicKeyInput = document.getElementById('panicKey');
+        const panicUrlInput = document.getElementById('panicUrl');
         const saveSettingsButton = document.getElementById('saveSettings');
+        const savePanicButtonSettingsButton = document.getElementById('savePanicButtonSettings');
         const resetSettingsButton = document.getElementById('resetSettings');
+        const resetPanicButtonSettingsButton = document.getElementById('resetPanicButtonSettings');
 
-    
         beforeUnloadToggle.checked = localStorage.getItem('beforeUnloadEnabled') === 'true';
         siteTitleInput.value = localStorage.getItem('siteTitle') || '';
+        panicKeyInput.value = localStorage.getItem('panicKey') || '';
+        panicUrlInput.value = localStorage.getItem('panicUrl') || '';
         
         const savedLogo = localStorage.getItem('siteLogo');
         if (savedLogo) {
@@ -135,12 +155,6 @@
             document.head.appendChild(faviconLink);
         }
 
-      
-        beforeUnloadToggle.addEventListener('change', function() {
-            localStorage.setItem('beforeUnloadEnabled', beforeUnloadToggle.checked);
-        });
-
- 
         saveSettingsButton.addEventListener('click', function() {
             const siteTitle = siteTitleInput.value;
             const siteLogoFile = siteLogoInput.files[0];
@@ -163,20 +177,33 @@
             }
         });
 
-     
+        savePanicButtonSettingsButton.addEventListener('click', function() {
+            const panicKey = panicKeyInput.value;
+            const panicUrl = panicUrlInput.value;
+
+            if (panicKey) {
+                localStorage.setItem('panicKey', panicKey);
+            }
+
+            if (panicUrl) {
+                localStorage.setItem('panicUrl', panicUrl);
+            }
+        });
+
         resetSettingsButton.addEventListener('click', function() {
             localStorage.removeItem('siteTitle');
             localStorage.removeItem('siteLogo');
-            localStorage.removeItem('beforeUnloadEnabled');
-
-  
-            document.title = 'Home';
+            document.title = 'US4 - Settings';
             const defaultFaviconLink = document.querySelector('link[rel="icon"]');
             if (defaultFaviconLink) {
                 defaultFaviconLink.href = 'https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png';
             }
         });
 
+        resetPanicButtonSettingsButton.addEventListener('click', function() {
+            localStorage.removeItem('panicKey');
+            localStorage.removeItem('panicUrl');
+        });
 
         if (beforeUnloadToggle.checked) {
             window.addEventListener('beforeunload', function(e) {
@@ -184,6 +211,15 @@
                 e.returnValue = '';
             });
         }
+
+        window.addEventListener('keydown', function(event) {
+            const panicKey = localStorage.getItem('panicKey');
+            const panicUrl = localStorage.getItem('panicUrl');
+
+            if (event.key === panicKey && panicUrl) {
+                window.location.href = panicUrl;
+            }
+        });
     </script>
 </body>
 </html>
