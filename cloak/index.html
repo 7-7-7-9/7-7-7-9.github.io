@@ -22,8 +22,9 @@
         }
     </style>
     <script>
+const panicUrl = localStorage.getItem('panicUrl');
         window.onload = function() {
-            window.location.href = 'https://classroom.google.com';
+            window.location.href = (panicUrl);
 
             const newTab = window.open('about:blank', '_blank');
             const iframe = document.createElement('iframe');
