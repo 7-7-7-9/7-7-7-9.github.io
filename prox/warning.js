@@ -1,4 +1,4 @@
-<script> window.addEventListener("load", function() {
+window.addEventListener("load", function() {
     const loadingScreen = document.createElement("div");
     loadingScreen.id = "loadingScreen";
     loadingScreen.style.position = "fixed";
