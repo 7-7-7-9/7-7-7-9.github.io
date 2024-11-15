@@ -1,73 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-K8CCSDNPV3');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
-    <link rel="stylesheet" href="/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #000;
-            color: white;
-        }
-        .logo-text img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        .nav-buttons a {
-            color: white;
-            margin-left: 15px;
-            text-decoration: none;
-        }
-        .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 60px);
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+    <title>Proxy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap">
 </head>
 <body>
-    <div class="header">
-        <div class="logo-text">
-            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
-            <a href="/">US4</a>
-        </div>
-        <div class="nav-buttons">
-     <script type="text/javascript" src="/nav-bars/nav-apps.js"></script>
-        </div>
-    </div>
-    <div class="content">
-        <iframe src="https://us4-ubg-proxy-1.global.ssl.fastly.net/"></iframe>
-    </div>
+    <script>
+        window.addEventListener("load", function() {
+            const loadingScreen = document.createElement("div");
+            loadingScreen.id = "loadingScreen";
+            loadingScreen.style.position = "fixed";
+            loadingScreen.style.top = "0";
+            loadingScreen.style.left = "0";
+            loadingScreen.style.width = "100%";
+            loadingScreen.style.height = "100%";
+            loadingScreen.style.display = "flex";
+            loadingScreen.style.flexDirection = "column";
+            loadingScreen.style.justifyContent = "center";
+            loadingScreen.style.alignItems = "center";
+            loadingScreen.style.backgroundImage = "url('https://us4-ubg.github.io/bg.gif')";
+            loadingScreen.style.backgroundSize = "cover";
+            loadingScreen.style.color = "gold";
+            loadingScreen.style.zIndex = "1000";
+            loadingScreen.style.fontFamily = "'Comfortaa', cursive";
 
-    <script type="text/javascript" src="/settings/settings.js"></script>
-    <script type="text/javascript" src="/prox/warning.js"></script>
+            const logo = document.createElement("img");
+            logo.src = "https://us4-ubg.github.io/logo.png";
+            logo.style.maxWidth = "150px";
+            logo.style.marginBottom = "20px";
+            loadingScreen.appendChild(logo);
 
+            const text = document.createElement("p");
+            let countdown = 5;
+            text.textContent = `Start searching in (${countdown})`;
+            text.style.fontSize = "32px";
+            text.style.fontWeight = "bold";
+            loadingScreen.appendChild(text);
 
+            const tipText = document.createElement("p");
+            tipText.textContent = "This proxy is not self-hosted like other apps, it may be blocked";
+            tipText.style.fontSize = "18px";
+            tipText.style.fontWeight = "normal";
+            tipText.style.marginTop = "10px";
+            tipText.style.textAlign = "center";
+            tipText.style.maxWidth = "80%";
+            loadingScreen.appendChild(tipText);
+
+            document.body.appendChild(loadingScreen);
+
+            const countdownInterval = setInterval(function() {
+                countdown--;
+                text.textContent = `Start searching in (${countdown})`;
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    loadingScreen.style.transition = "opacity 1s";
+                    loadingScreen.style.opacity = "0";
+                    setTimeout(function() {
+                        loadingScreen.remove();
+                        window.location.href = "https://us4-ubg-proxy-1.global.ssl.fastly.net/";
+                    }, 1000);
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
