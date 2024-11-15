@@ -1,3 +1,7 @@
-Welcome to US4! This is a website made by voucan. All credits go to owners of each game
+**Welcome to US4! This is a website made by voucan.**
 Join our discord: https://discord.gg/VDA8Ngx38Z
-https://us4-ubg.github.io
+
+# *Credits*
+Voucan - Devoloper/Owner
+Brunys - Main Part of the Proxy (stole this it from him, use biw or something)
+**Credits to each game and movie owner**
