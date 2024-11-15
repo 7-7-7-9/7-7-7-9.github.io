@@ -35,7 +35,7 @@ if (autocloak) {
         const newTab = window.open('about:blank', '_blank');
         if (newTab) {
             const iframe = document.createElement('iframe');
-            iframe.src = '/cloaked';
+            iframe.src = '/prox/cloaked';
             iframe.style.width = '100vw';
             iframe.style.height = '100vh';
             iframe.style.border = 'none';
