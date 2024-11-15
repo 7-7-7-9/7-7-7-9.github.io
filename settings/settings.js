@@ -28,22 +28,3 @@ if (panicKey && panicUrl) {
         }
     });
 }
-
-const autocloak = localStorage.getItem('autocloakEnabled') === 'true';
-if (autocloak) {
-    window.onload = function() {
-        const newTab = window.open('about:blank', '_blank');
-        if (newTab) {
-            const iframe = document.createElement('iframe');
-            iframe.src = '/p';
-            iframe.style.width = '100vw';
-            iframe.style.height = '100vh';
-            iframe.style.border = 'none';
-            newTab.document.body.style.margin = '0';
-            newTab.document.body.appendChild(iframe);
-        }
-
-        const panicUrl = localStorage.getItem('panicUrl') || "https://classroom.google.com";
-        window.location.href = panicUrl;
-    };
-}
