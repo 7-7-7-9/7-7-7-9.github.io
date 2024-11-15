@@ -146,15 +146,15 @@
         <h1>How would you like to open our prøxy?</h1>
     </div>
 
-    <a class="mod-button" href="/prox">Open Here</a>
-    <a class="mod-button" href="/prox" target="_blank">Open In New Tab (Uncloaked)</a>
+    <a class="mod-button" href="prox">Open Here</a>
+    <a class="mod-button" href="prox" target="_blank">Open In New Tab (Uncloaked)</a>
     <a class="mod-button" href="javascript:void(0);" onclick="openInIframe()">Open in New Tab (Cloaked)</a>
 
     <script>
         function openInIframe() {
             const newTab = window.open('about:blank', '_blank');
             const iframe = document.createElement('iframe');
-            iframe.src = '/';
+            iframe.src = 'prox';
             iframe.style.width = '100vw';
             iframe.style.height = '100vh';
             iframe.style.border = 'none';
