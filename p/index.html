@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-K8CCSDNPV3');
-</script>
- <meta property="og:title" content="US4">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K8CCSDNPV3');
+    </script>
+    <meta property="og:title" content="US4">
     <meta property="og:description" content="Play unblocked games">
     <meta property="og:image" content="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png">
     <meta name="keywords" content="Unblocked Sites 4, school, slope, geometry, google classroom, college, football, rugby, US4, unblocked games, snowrider, boxing, soccer, volleyball, run 3, subway surfers, paperio, ovo, cluster rush, boxing random, volley random, soccer random, basket random">
@@ -17,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
-    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
             background: url('/bg.gif') repeat center center fixed;
@@ -32,10 +31,22 @@
             padding: 10px 20px;
             background-color: #000;
             color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 20px;
+        }
+        .logo-text {
+            display: flex;
+            align-items: center;
         }
         .logo-text img {
             height: 40px;
             margin-right: 10px;
+        }
+        .logo-text a {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
         }
         .nav-buttons a {
             color: white;
@@ -50,9 +61,9 @@
             padding: 20px 0;
         }
         .game-button {
+            position: relative;
             background-color: #333;
             border: 2px solid #444;
-            padding: 0;
             border-radius: 10px;
             width: 150px;
             height: 150px;
@@ -60,23 +71,42 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .game-button:hover {
-            background-color: #555;
+            overflow: hidden;
         }
         .game-button img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+        .game-button:hover img {
+            opacity: 0.3;
+        }
+        .overlay-text {
+            position: absolute;
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .game-button:hover .overlay-text {
+            opacity: 1;
         }
         .game-title {
             text-align: center;
             color: white;
             font-weight: bold;
             font-size: 36px;
-            margin: 20px 0 10px 0;
+            margin: 10px 0 0 0;
         }
         .games-title {
             text-align: center;
@@ -87,7 +117,6 @@
         a {
             text-decoration: none;
         }
-
         .update-log-overlay {
             position: fixed;
             top: 0;
@@ -102,91 +131,93 @@
             color: white;
             font-size: 20px;
             text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
         }
-
         .update-log-content {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
         }
-
         .update-log-content h2 {
             margin-bottom: 10px;
             font-size: 28px;
         }
-
         .update-log-content p {
             margin-bottom: 20px;
             font-size: 18px;
         }
-
         .blur-content {
             filter: blur(5px);
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="header blur-content">
         <div class="logo-text">
-            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
+            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Unblocked Sites 4, US4">
             <a href="/">US4</a>
         </div>
         <div class="nav-buttons">
-            <a href="/games">🕹️ Games</a>
-            <a href="/partners">👥 Partners</a>
-            <a href="/apps">📙 Apps & More</a>
-            <a href="/extra">➕ Extra</a>
+            <script type="text/javascript" src="/nav-bars/nav-games.js"></script>
         </div>
     </div>
 
-    <div class="game-title blur-content">US4</div>
-    <div class="games-title blur-content">Play Our Top Games</div> 
+    <div class="game-title blur-content">US4 | Popular Games</div>
+    <div class="games-title blur-content" id="randomMessage"></div>
 
     <div class="game-grid blur-content" id="gameGrid">
-          <div class="game-button">
-            <a href="/games/holeio">
-                <img src="/hole-io/holeio.png" alt="Hole.io">
+        <div class="game-button">
+            <a href="/games/clusterrush">
+                <img src="/clusterrush/clusterrush.png" alt="Cluster Rush">
+                <div class="overlay-text">Cluster Rush</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/supermario64">
+                <img src="/sm64/download.png" alt="Super Mario 64">
+                <div class="overlay-text">Super Mario 64</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/games/fridaynightfunkin">
+                <img src="/fnf/download.png" alt="Friday Night Funkin">
+                <div class="overlay-text">Friday Night Funkin</div>
             </a>
         </div>
         <div class="game-button">
             <a href="/games/subwaysurfers">
                 <img src="/SubwaySurfers/subway.jfif" alt="Subway Surfers">
+                <div class="overlay-text">Subway Surfers</div>
             </a>
         </div>
-            <div class="game-button">
-                <a href="/games/snowrider">
-                <img src="/games-repo/snow-rider/snowrider.png" alt="Snow Rider 3D">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/run3">
-                <img src="/Run-3/Run3.png" alt="Run 3">
-                </a>
-            </div>
-            <div class="game-button">
-                <a href="/games/slope">
-                <img src="/Slope/slope.png" alt="Bitlife">
-                </a>
-            </div>
+        <div class="game-button">
+            <a href="/games/paperio">
+                <img src="/games-repo/paper-io-2/paperio.jfif" alt="Paper.io">
+                <div class="overlay-text">Paper.io</div>
+            </a>
+        </div>
     </div>
 
     <div class="update-log-overlay" id="updateLog">
         <div class="update-log-content">
             <h2>Update Log</h2>
-            <p>Version 1.2: Added Apps page with Discord and Sound Buttons</p>
-            <p>Version 1.1: Added more Sport Random games, Paper.io, Snow Rider 3D, and more</p>
-            <p>Version 1: Added Retro Bowl, Cluster Rush, Subway Surfers, and Boxing Random</p>
+            <p>Version 1.54: Proxy</p>
+            <p>Version 1.53: Added Thirty Dollar Webite</p>
+            <p>Version 1.52: Added Super Mario 64</p>
+            <p>Version 1.51: Added Duck Life 3, Using /cloak will now open your panicUrl if you have one set</p>
+            <p>Version 1.5: Added 2048 and friday night funkin, Panic Button Setting</p>
         </div>
     </div>
 
     <script>
-        const currentVersion = "1.2"; // Version
+        const currentVersion = "1.53"; 
 
         window.onload = function() {
             const storedVersion = localStorage.getItem('updateLogVersion');
-
             if (storedVersion !== currentVersion) {
                 document.getElementById('updateLog').style.display = 'flex';
                 document.querySelectorAll('.blur-content').forEach(function(element) {
@@ -198,36 +229,32 @@
                     element.classList.remove('blur-content');
                 });
             }
-        }
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('randomMessage').textContent = randomMessage;
+        };
 
         document.getElementById('updateLog').addEventListener('click', function() {
-            document.getElementById('updateLog').style.display = 'none';
-            document.querySelectorAll('.blur-content').forEach(function(element) {
-                element.classList.remove('blur-content');
-            });
-            localStorage.setItem('updateLogVersion', currentVersion);
+            const updateLog = document.getElementById('updateLog');
+            updateLog.style.opacity = '0';
+            setTimeout(function() {
+                updateLog.style.display = 'none';
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
+            }, 500);
+            localStorage.setItem('updateLogVersion', currentVersion); 
         });
 
-        function checkGridAlignment() {
-            const gameGrid = document.getElementById('gameGrid');
-            const buttons = document.querySelectorAll('.game-button');
-            const pageWidth = window.innerWidth;
-            
-            buttons.forEach(button => {
-                const rect = button.getBoundingClientRect();
-                const distanceToRightEdge = pageWidth - rect.right;
-                
-                if (distanceToRightEdge < 75) {
-                    button.style.clear = 'both';
-                } else {
-                    button.style.clear = 'none';
-                }
+        document.querySelectorAll('.game-button a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.blur-content').forEach(function(element) {
+                    element.classList.remove('blur-content');
+                });
             });
-        }
-
-        window.addEventListener('resize', checkGridAlignment);
-        window.addEventListener('load', checkGridAlignment);
+        });
     </script>
-
+    <script src="/messages.js"></script>
+    <script type="text/javascript" src="/settings/settings.js"></script>
 </body>
 </html>
