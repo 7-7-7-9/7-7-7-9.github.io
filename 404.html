@@ -51,11 +51,16 @@
             cursor: pointer;
             text-transform: uppercase;
             text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .button:hover {
             background-color: #FFD700;
             color: #1a1a1a;
+        }
+
+        button.button {
+            border: none;
         }
 
         .background {
@@ -64,7 +69,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://i.makeagif.com/media/7-05-2017/EFwjlJ.gif') repeat center center fixed;
+            background: url('/bg.gif') repeat center center fixed;
             background-size: cover;
             opacity: 0.15;
             z-index: -1;
@@ -83,10 +88,8 @@
             <li>Contact @voucan if the issue persists</li>
         </ul>
         <a href="/" class="button">Go to Homepage</a>
-        <button onclick="location.reload()">Fix Proxy</button>
-
+        <button class="button" onclick="location.reload()">Fix Proxy</button>
     </div>
     <script type="text/javascript" src="/settings/settings.js"></script>
-
 </body>
 </html>
