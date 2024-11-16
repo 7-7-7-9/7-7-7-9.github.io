@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K8CCSDNPV3');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://i.makeagif.com/media/7-05-2017/EFwjlJ.gif') repeat center center fixed;
+            background-size: 100%;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+        }
+        .logo-text img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .nav-buttons a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .game-button {
+            position: relative;
+            background-color: #333;
+            border: 2px solid #444;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .game-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+        .game-button:hover img {
+            opacity: 0.3;
+        }
+        .overlay-text {
+            position: absolute;
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1; 
+            width: 100%; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+        .game-button:hover .overlay-text {
+            opacity: 1; 
+        }
+        .game-title {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 36px;
+            margin: 20px 0 10px 0;
+        }
+        .games-title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="header">
+        <div class="logo-text">
+            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
+            <a href="/">US4</a>
+        </div>
+        <div class="nav-buttons">
+     <script type="text/javascript" src="/nav-bars/nav-apps.js"></script>
+        </div>
+    </div>
+
+    <div class="game-title">Apps</div>
+
+    <div class="game-grid" id="gameGrid">
+        <div class="game-button">
+            <a href="/apps/discord">
+                <img src="/apps/discord.png" alt="Discord">
+                <div class="overlay-text">Discord</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/apps/ai">
+                <img src="/apps/ai.png" alt="AI">
+                <div class="overlay-text">AI</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/apps/embed">
+                <img src="/apps/embed.png" alt="Embed Sites">
+                <div class="overlay-text">Embed Sites</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/apps/thirtydollarwebsite">
+                <img src="/seraph/download.png" alt="Thirty Dollar Website">
+                <div class="overlay-text">Thirty Dollar Website</div>
+            </a>
+        </div>
+        <div class="game-button">
+            <a href="/apps/youtube">
+                <img src="/apps/invid.png" alt="Youtube (Invidious)">
+                <div class="overlay-text">Youtube (Invidious)</div>
+            </a>
+        </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function checkGridAlignment() {
+            const gameGrid = document.getElementById('gameGrid');
+            const buttons = document.querySelectorAll('.game-button');
+            const pageWidth = window.innerWidth;
+            
+            buttons.forEach(button => {
+                const rect = button.getBoundingClientRect();
+                const distanceToRightEdge = pageWidth - rect.right;
+                
+             
+                if (distanceToRightEdge < 75) {
+                    button.style.clear = 'both';
+                } else {
+                    button.style.clear = 'none';
+                }
+            });
+        }
+
+    
+        window.addEventListener('resize', checkGridAlignment);
+        window.addEventListener('load', checkGridAlignment);
+    </script>
+    <script type="text/javascript" src="/settings/settings.js"></script>
+</body>
+</html>
