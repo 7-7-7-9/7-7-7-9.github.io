@@ -11,7 +11,6 @@
     <meta property="og:description" content="Proxy">
     <meta property="og:image" content="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png">
     <meta name="keywords" content="Unblocked Sites 4, school, slope, geometry, google classroom, college, football, rugby, US4, unblocked games, snowrider, boxing, soccer, volleyball, run 3, subway surfers, paperio, ovo, cluster rush, boxing random, volley random, soccer random, basket random">
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -139,20 +138,32 @@
             <button onclick="home()">
                 <i class="fa fa-home"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.location.reload()">
-                <i class="fas fa-redo"></i>
-            </button>
             <button onclick="document.querySelector('#proxy-iframe').contentWindow.history.back()">
                 <i class="fas fa-arrow-left"></i>
             </button>
             <button onclick="document.querySelector('#proxy-iframe').contentWindow.history.forward()">
                 <i class="fas fa-arrow-right"></i>
             </button>
+            <button onclick="document.querySelector('#proxy-iframe').contentWindow.location.reload()">
+                <i class="fas fa-redo"></i>
+            </button>
             <button onclick="toggleNavbar()">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
             <button onclick="settings()">
                 <i class="fa fa-cog"></i>
+            </button>
+            <button onclick="document.querySelector('#proxy-iframe').contentWindow.eval(`(async () => {
+                try {
+                    const response = await fetch('/prox/edit.js');
+                    if (!response.ok) throw 'Error';
+                    const script = await response.text();
+                    eval(script);
+                } catch (e) {
+                    console.error(e);
+                }
+            })();`)">
+                <i class="fa fa-code"></i>
             </button>
         </div>
         <div class="search-bar">
