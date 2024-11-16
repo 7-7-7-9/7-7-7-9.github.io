@@ -5,4 +5,4 @@ Join our discord: https://discord.gg/VDA8Ngx38Z
 Voucan - Devoloper/Owner
 Brunys - Main Part of the Proxy (stole this it from him, use biw or something)
 Frogiee - Now.gg Bypass
-**Credits to each game and movie owner**
+**Credits to each game developer and owner**
