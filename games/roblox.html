@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8CCSDNPV3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K8CCSDNPV3');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
@@ -8,16 +16,31 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
             background: url('/honeycomb.jfif') repeat center center fixed;
             background-size: 200px, 105px;
-            margin: 0;
-            padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             height: 100vh;
             overflow: hidden;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000;
+            color: white;
+        }
+        .logo-text img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .nav-buttons a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
         }
         .container {
             border: 2px solid #ffc700;
@@ -25,11 +48,12 @@
             width: 80%;
             max-width: 800px;
             background-color: #000;
+            margin: auto;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between; 
-            height: 500px; 
+            flex-grow: 1;
         }
         .game-iframe {
             width: 100%;
@@ -70,53 +94,62 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-    <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
-
-    <div class="button-bar">
-        <button onclick="refreshGame()">&#x21bb;</button>
-        <button onclick="toggleFullscreen()">&#x26F6;</button>
-        <button onclick="DiscordBM()"><i class="fa-brands fa-discord"></i></button>
-        <button onclick="AI()"><i class="fa-solid fa-robot"></i></button>
+    <div class="header">
+        <div class="logo-text">
+            <img src="https://raw.githubusercontent.com/US4-UBG/US4-UBG.github.io/refs/heads/main/logo.png" alt="Logo">
+            <a href="/">US4</a>
+        </div>
+        <div class="nav-buttons">
+            <script type="text/javascript" src="/nav-bars/nav-games.js"></script>
+        </div>
     </div>
-</div>
+    
+    <div class="container">
+        <iframe id="game-frame" class="game-iframe" allowfullscreen></iframe>
 
-<script>
-    function getUrlParameter(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    }
+        <div class="button-bar">
+            <button onclick="refreshGame()">&#x21bb;</button>
+            <button onclick="toggleFullscreen()">&#x26F6;</button>
+            <button onclick="DiscordBM()"><i class="fa-brands fa-discord"></i></button>
+            <button onclick="AI()"><i class="fa-solid fa-robot"></i></button>
+        </div>
+    </div>
 
-    window.onload = function() {
-        const iframe = document.getElementById('game-frame');
-        const url = getUrlParameter('url') || '/static/embed#https://nowgg.cloud';
-        iframe.src = url;
-    };
-
-    function refreshGame() {
-        const iframe = document.getElementById('game-frame');
-        iframe.src = iframe.src;
-    }
-
-    function toggleFullscreen() {
-        const iframe = document.getElementById('game-frame');
-        if (!document.fullscreenElement) {
-            iframe.requestFullscreen().catch(err => {
-                alert(`Error attempting to enable fullscreen mode: ${err.message}`);
-            });
-        } else {
-            document.exitFullscreen();
+    <script>
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
         }
-    }
 
-    function DiscordBM() {
-        window.location.href = "javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3';s.async=true;s.defer=true;document.body.appendChild(s);s.onload=function(){new Crate({server:'1157125685178007672',channel:'1210407964586807376'})}})();";
-    }
+        window.onload = function() {
+            const iframe = document.getElementById('game-frame');
+            const url = getUrlParameter('url') || '/static/embed#https://nowgg.cloud';
+            iframe.src = url;
+        };
 
-    function AI() {
-        window.location.href = "javascript: (function() { fetch('https://us4-ubg.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
-    }
-</script>
+        function refreshGame() {
+            const iframe = document.getElementById('game-frame');
+            iframe.src = iframe.src;
+        }
+
+        function toggleFullscreen() {
+            const iframe = document.getElementById('game-frame');
+            if (!document.fullscreenElement) {
+                iframe.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable fullscreen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function DiscordBM() {
+            window.location.href = "javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3';s.async=true;s.defer=true;document.body.appendChild(s);s.onload=function(){new Crate({server:'1157125685178007672',channel:'1210407964586807376'})}})();";
+        }
+
+        function AI() {
+            window.location.href = "javascript: (function() { fetch('https://us4-ubg.github.io/ai/bookmarklet.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();";
+        }
+    </script>
 </body>
 </html>
