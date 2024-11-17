@@ -150,9 +150,6 @@
             <button onclick="toggleNavbar()">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
-            <button onclick="open()">
-                <i class="fa-solid fa-up-right-from-square"></i>
-            </button>
             <button onclick="document.querySelector('#proxy-iframe').contentWindow.eval(`(async () => {
                 try {
                     const response = await fetch('/prox/edit.js');
@@ -202,17 +199,6 @@
         }
         function home() {
             document.getElementById('proxy-iframe').src = `/static`;
-        }
-        function open() {
-            const iframe = document.createElement('iframe');
-            iframe.src = document.getElementById('proxy-iframe').src;
-            iframe.style.width = '100vw';
-            iframe.style.height = '100vh';
-            iframe.style.border = 'none';
-
-            const newTab = window.open('about:blank', '_blank');
-            newTab.document.body.style.margin = '0';
-            newTab.document.body.appendChild(iframe);
         }
     </script>
     <script src="/prox/settings.js"></script>
