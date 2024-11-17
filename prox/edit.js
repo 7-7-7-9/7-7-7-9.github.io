@@ -90,7 +90,7 @@
     consoleTextarea.style.padding = '10px';
     consoleTextarea.style.boxSizing = 'border-box';
     consoleTextarea.style.outline = 'none';
-    consoleTextarea.placeholder = 'Example: console.log("Hello World")';
+    consoleTextarea.placeholder = 'console.log("Hello World")';
     consoleContent.appendChild(consoleTextarea);
 
     let resizeBar = document.createElement('div');
