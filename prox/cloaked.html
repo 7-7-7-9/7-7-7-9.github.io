@@ -150,18 +150,6 @@
             <button onclick="toggleNavbar()">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.eval(`(async () => {
-                try {
-                    const response = await fetch('/prox/edit.js');
-                    if (!response.ok) throw 'Error';
-                    const script = await response.text();
-                    eval(script);
-                } catch (e) {
-                    console.error(e);
-                }
-            })();`)">
-                <i class="fa fa-code"></i>
-            </button>
             <button onclick="settings()">
                 <i class="fa fa-cog"></i>
             </button>
