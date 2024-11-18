@@ -23,58 +23,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Comfortaa', cursive;
+            font-weight: bold;
         }
         body, html {
             height: 100%;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-        }
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #333;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-        .navbar-left {
-            display: flex;
-            align-items: center;
-        }
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .navbar-left button {
-            font-size: 24px;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            color: white;
-            margin-right: 10px;
-        }
-        .navbar-left button i {
-            color: gold;
-        }
-        .navbar.hidden {
-            transform: translateY(-100%);
-        }
-        .content-wrapper {
-            flex-grow: 1;
-            overflow: hidden;
-            position: relative;
-            height: 100%;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
         }
         .show-navbar-button {
             position: fixed;
@@ -91,6 +47,78 @@
         .show-navbar-button i {
             color: gold;
         }
+        .tabs {
+            display: flex;
+            align-items: center;
+            background-color: #222;
+            border-bottom: 2px solid #FFD700;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .tab {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            color: #ccc;
+            cursor: pointer;
+            position: relative;
+            background-color: #333;
+            border-right: 1px solid #555;
+            transition: background-color 0.3s;
+            flex-shrink: 1;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tab.active {
+            background-color: #444;
+            color: #FFD700;
+        }
+        .tab:hover {
+            background-color: #555;
+        }
+        .tab .close-button {
+            margin-left: 5px;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .tab .close-button:hover {
+            color: #f00;
+        }
+        .add-tab-button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #333;
+            color: #FFD700;
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 10px;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid #FFD700;
+        }
+        .navbar-left {
+            display: flex;
+            gap: 10px;
+        }
+        .navbar button {
+            background: transparent;
+            border: none;
+            color: #FFD700;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .navbar button:hover {
+            color: #fff;
+        }
         .search-bar {
             flex-grow: 1;
             display: flex;
@@ -98,20 +126,15 @@
             border-radius: 25px;
             background-color: #000;
             border: 2px solid #FFD700;
-            margin-left: 20px;
             overflow: hidden;
         }
         .search-bar input {
             flex-grow: 1;
             padding: 10px;
             border: none;
-            border-radius: 25px 0 0 25px;
             background-color: transparent;
             color: #ccc;
             font-size: 16px;
-        }
-        .search-bar input::placeholder {
-            color: #888;
         }
         .search-bar input:focus {
             outline: none;
@@ -123,28 +146,66 @@
             color: #000;
             font-weight: bold;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            border-radius: 0 25px 25px 0;
         }
-        .search-bar button i {
-            margin-left: 5px;
+        .content-wrapper {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
+        iframe.active {
+            display: block;
+        }
+        .hide-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 30px;
+            color: #FFD700;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .navbar.hidden, .tabs.hidden {
+            display: none;
+        }
+        .show-navbar-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 30px;
+            color: #FFD700;
+            cursor: pointer;
+            z-index: 1001;
         }
     </style>
 </head>
 <body>
+    <div class="tabs" id="tabs">
+        <div class="tab active" onclick="selectTab(this)">New Tab <span class="close-button" onclick="closeTab(event, this)">×</span></div>
+        <button class="add-tab-button" onclick="addTab()">+</button>
+    </div>
     <div class="navbar" id="navbar">
         <div class="navbar-left">
             <button onclick="home()">
                 <i class="fa fa-home"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.history.back()">
+            <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.back()">
                 <i class="fas fa-arrow-left"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.history.forward()">
+            <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.forward()">
                 <i class="fas fa-arrow-right"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.location.reload()">
+            <button onclick="document.querySelector('.tab-iframe.active').contentWindow.location.reload()">
                 <i class="fas fa-redo"></i>
             </button>
             <button onclick="toggleNavbar()">
@@ -165,30 +226,102 @@
         <i class="fas fa-arrow-down"></i>
     </button>
     <div class="content-wrapper" id="content-wrapper">
-        <iframe id="proxy-iframe" src="/static/index.html"></iframe>
+        <iframe class="tab-iframe active" src="/static/index.html" id="iframe-1"></iframe>
     </div>
-    <script>
+
+<script>
+    let tabCount = 1;
+
+    function selectTab(tabElement) {
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-iframe').forEach(iframe => iframe.classList.remove('active'));
+        tabElement.classList.add('active');
+        const tabIndex = [...tabElement.parentElement.children].indexOf(tabElement);
+        const iframe = document.querySelectorAll('.tab-iframe')[tabIndex];
+        iframe.classList.add('active');
+        updateTabName(iframe, tabElement);
+    }
+
+    function addTab() {
+        tabCount++;
+        const tabsContainer = document.getElementById('tabs');
+        const newTab = document.createElement('div');
+        newTab.classList.add('tab');
+        newTab.textContent = `Tab ${tabCount}`;
+        newTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        newTab.onclick = () => selectTab(newTab);
+        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
+        const iframe = document.createElement('iframe');
+        iframe.classList.add('tab-iframe');
+        iframe.id = `iframe-${tabCount}`;
+        iframe.src = '/static/index.html';
+        document.getElementById('content-wrapper').appendChild(iframe);
+        resizeTabs();
+    }
+
+    function closeTab(event, closeButton) {
+        event.stopPropagation();
+        const tab = closeButton.parentElement;
+        const tabsContainer = document.getElementById('tabs');
+        if (tab.classList.contains('active')) {
+            const nextTab = tab.nextElementSibling || tab.previousElementSibling;
+            if (nextTab && nextTab.classList.contains('tab')) {
+                selectTab(nextTab);
+            }
+        }
+        tabsContainer.removeChild(tab);
+        const iframe = document.getElementById(`iframe-${tabCount}`);
+        document.getElementById('content-wrapper').removeChild(iframe);
+        resizeTabs();
+    }
+
+    function resizeTabs() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabWidth = Math.min(150, 100 / tabs.length + '%');
+        tabs.forEach(tab => tab.style.maxWidth = tabWidth);
+    }
+
+    function updateTabName(iframe, tabElement) {
+        iframe.onload = () => {
+            const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
+            tabElement.textContent = title.substring(0, 10);
+            tabElement.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        };
+    }
+
+    function home() {
+        const iframe = document.querySelector('.tab-iframe.active');
+        iframe.src = '/static/index.html';
+        const activeTab = document.querySelector('.tab.active');
+        activeTab.textContent = 'Home';
+        activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+    }
+
+    function settings() {
+        const iframe = document.querySelector('.tab-iframe.active');
+        iframe.src = '/settings/prox';
+        const activeTab = document.querySelector('.tab.active');
+        activeTab.textContent = 'Settings';
+        activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+    }
+
         function toggleNavbar() {
             const navbar = document.getElementById('navbar');
             const showNavbarButton = document.getElementById('show-navbar-button');
             navbar.classList.toggle('hidden');
+            tabs.classList.toggle('hidden');
             showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
         }
-        function search() {
-            const input = document.getElementById('search-input').value.trim();
-            const iframe = document.getElementById('proxy-iframe');
-            if (input) {
-                const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-                iframe.src = `/static/embed#${url}`;
-            }
+
+    function search() {
+        const input = document.getElementById('search-input').value.trim();
+        const iframe = document.querySelector('.tab-iframe.active');
+        if (input) {
+            const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
+            iframe.src = `/static/embed#${url}`;
         }
-        function settings() {
-            document.getElementById('proxy-iframe').src = `/settings/prox`;
-        }
-        function home() {
-            document.getElementById('proxy-iframe').src = `/static/index`;
-        }
-    </script>
+    }
+</script>
     <script src="/prox/settings.js"></script>
 </body>
 </html>
