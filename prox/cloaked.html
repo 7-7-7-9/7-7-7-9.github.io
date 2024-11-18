@@ -232,48 +232,97 @@
         document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
         document.querySelectorAll('.tab-iframe').forEach(iframe => iframe.classList.remove('active'));
         tabElement.classList.add('active');
-        const index = Array.from(tabElement.parentElement.children).indexOf(tabElement);
-        document.querySelectorAll('.tab-iframe')[index].classList.add('active');
+        const tabIndex = [...tabElement.parentElement.children].indexOf(tabElement);
+        const iframe = document.querySelectorAll('.tab-iframe')[tabIndex];
+        iframe.classList.add('active');
+        updateTabName(iframe, tabElement);
     }
 
     function addTab() {
         tabCount++;
-        const tab = document.createElement('div');
-        tab.classList.add('tab');
-        tab.innerHTML = `Tab ${tabCount} <span class="close-button" onclick="closeTab(event, this)">×</span>`;
-        document.getElementById('tabs').insertBefore(tab, document.querySelector('.add-tab-button'));
+        const tabsContainer = document.getElementById('tabs');
+        const newTab = document.createElement('div');
+        newTab.classList.add('tab');
+        newTab.textContent = `Tab ${tabCount}`;
+        newTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        newTab.onclick = () => selectTab(newTab);
+        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
         const iframe = document.createElement('iframe');
         iframe.classList.add('tab-iframe');
-        iframe.src = `/static/index.html`;
+        iframe.id = `iframe-${tabCount}`;
+        iframe.src = '/static/index.html';
         document.getElementById('content-wrapper').appendChild(iframe);
+        resizeTabs();
     }
 
     function closeTab(event, closeButton) {
         event.stopPropagation();
         const tab = closeButton.parentElement;
-        const index = Array.from(tab.parentElement.children).indexOf(tab);
-        document.querySelectorAll('.tab-iframe')[index].remove();
-        tab.remove();
-        tabCount--;
+        const tabsContainer = document.getElementById('tabs');
         if (tab.classList.contains('active')) {
-            if (document.querySelectorAll('.tab').length > 0) {
-                document.querySelectorAll('.tab')[0].click();
+            const nextTab = tab.nextElementSibling || tab.previousElementSibling;
+            if (nextTab && nextTab.classList.contains('tab')) {
+                selectTab(nextTab);
             }
+        }
+        tabsContainer.removeChild(tab);
+        const iframe = document.getElementById(`iframe-${tabCount}`);
+        document.getElementById('content-wrapper').removeChild(iframe);
+        tabCount--;
+        resizeTabs();
+    }
+
+    function resizeTabs() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabWidth = Math.min(200, 150 / tabs.length + '%');
+        tabs.forEach(tab => tab.style.maxWidth = tabWidth);
+    }
+
+    function updateTabName(iframe, tabElement) {
+        iframe.onload = () => {
+            const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
+            tabElement.textContent = title.substring(0, 10);
+            tabElement.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        };
+    }
+
+    function search() {
+        const input = document.getElementById('search-input').value.trim();
+        const iframe = document.querySelector('.tab-iframe.active');
+        if (input) {
+            const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
+            iframe.src = `/static/embed#${url}`;
         }
     }
 
-    function toggleFullscreen() {
-        const iframe = document.querySelector('.tab-iframe.active');
-        if (iframe.requestFullscreen) {
-            iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) {
-            iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) {
-            iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) {
-            iframe.msRequestFullscreen();
-        }
+    function home() {
+ 	   const iframe = document.querySelector('.tab-iframe.active');
+	    iframe.src = '/static/index';
+	    const activeTab = document.querySelector('.tab.active');
+		activeTab.textContent = 'New Tab';
+		activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
     }
+
+	function settings() {
+ 	   const iframe = document.querySelector('.tab-iframe.active');
+	    iframe.src = '/settings/prox';
+	    const activeTab = document.querySelector('.tab.active');
+		activeTab.textContent = 'Settings';
+		activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+}
+
+	function toggleFullscreen() {
+		const iframe = document.querySelector('.tab-iframe.active');
+		if (iframe.requestFullscreen) {
+		iframe.requestFullscreen();
+			} else if (iframe.mozRequestFullScreen) {
+		iframe.mozRequestFullScreen();
+			} else if (iframe.webkitRequestFullscreen) {
+		iframe.webkitRequestFullscreen();
+			} else if (iframe.msRequestFullscreen) {
+		iframe.msRequestFullscreen();
+	}
+}
 </script>
 	<script src="/prox/settings2.js"></script>
 </body>
