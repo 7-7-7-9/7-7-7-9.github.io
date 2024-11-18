@@ -277,14 +277,14 @@
 
     function resizeTabs() {
         const tabs = document.querySelectorAll('.tab');
-        const tabWidth = Math.min(150, 100 / tabs.length + '%');
+        const tabWidth = Math.min(200, 150 / tabs.length + '%');
         tabs.forEach(tab => tab.style.maxWidth = tabWidth);
     }
 
     function updateTabName(iframe, tabElement) {
         iframe.onload = () => {
             const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
-            tabElement.textContent = title.substring(0, 10);
+            tabElement.textContent = 'New Tab';
             tabElement.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
         };
     }
