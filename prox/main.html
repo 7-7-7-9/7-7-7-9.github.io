@@ -272,6 +272,7 @@
         tabsContainer.removeChild(tab);
         const iframe = document.getElementById(`iframe-${tabCount}`);
         document.getElementById('content-wrapper').removeChild(iframe);
+        tabCount--;
         resizeTabs();
     }
 
@@ -284,7 +285,7 @@
     function updateTabName(iframe, tabElement) {
         iframe.onload = () => {
             const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
-            tabElement.textContent = 'New Tab';
+            tabElement.textContent = title.substring(0, 10);
             tabElement.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
         };
     }
@@ -305,13 +306,13 @@
         activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
     }
 
-        function toggleNavbar() {
-            const navbar = document.getElementById('navbar');
-            const showNavbarButton = document.getElementById('show-navbar-button');
-            navbar.classList.toggle('hidden');
-            tabs.classList.toggle('hidden');
-            showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
-        }
+    function toggleNavbar() {
+        const navbar = document.getElementById('navbar');
+        const showNavbarButton = document.getElementById('show-navbar-button');
+        navbar.classList.toggle('hidden');
+        tabs.classList.toggle('hidden');
+        showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
+    }
 
     function search() {
         const input = document.getElementById('search-input').value.trim();
