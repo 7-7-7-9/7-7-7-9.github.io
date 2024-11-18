@@ -24,6 +24,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Comfortaa', cursive;
+            font-weight: bold;
         }
         body, html {
             height: 100%;
@@ -156,6 +157,9 @@
             width: 100%;
             height: 100%;
             border: none;
+            display: none;
+        }
+        iframe.active {
             display: block;
         }
         .hide-button {
@@ -172,6 +176,17 @@
         .navbar.hidden, .tabs.hidden {
             display: none;
         }
+        .show-navbar-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            font-size: 30px;
+            color: #FFD700;
+            cursor: pointer;
+            z-index: 1001;
+        }
     </style>
 </head>
 <body>
@@ -184,13 +199,13 @@
             <button onclick="home()">
                 <i class="fa fa-home"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.history.back()">
+            <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.back()">
                 <i class="fas fa-arrow-left"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.history.forward()">
+            <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.forward()">
                 <i class="fas fa-arrow-right"></i>
             </button>
-            <button onclick="document.querySelector('#proxy-iframe').contentWindow.location.reload()">
+            <button onclick="document.querySelector('.tab-iframe.active').contentWindow.location.reload()">
                 <i class="fas fa-redo"></i>
             </button>
             <button onclick="toggleNavbar()">
@@ -211,90 +226,103 @@
         <i class="fas fa-arrow-down"></i>
     </button>
     <div class="content-wrapper" id="content-wrapper">
-        <iframe id="proxy-iframe" src="/static/index.html"></iframe>
+        <iframe class="tab-iframe active" src="/static/index.html" id="iframe-1"></iframe>
     </div>
-    <script>
-        let tabCount = 1;
 
-        function selectTab(tabElement) {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            tabElement.classList.add('active');
-            document.getElementById('proxy-iframe').src = tabElement.getAttribute('data-url');
-        }
+<script>
+    let tabCount = 1;
 
-        function addTab() {
-            tabCount++;
-            const tabsContainer = document.getElementById('tabs');
-            const newTab = document.createElement('div');
-            newTab.classList.add('tab');
-            newTab.textContent = `Tab ${tabCount}`;
-            newTab.setAttribute('data-url', '/static/index.html');
-            newTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
-            newTab.onclick = () => selectTab(newTab);
-            tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
-            resizeTabs();
-            selectTab(newTab);
-        }
+    function selectTab(tabElement) {
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-iframe').forEach(iframe => iframe.classList.remove('active'));
+        tabElement.classList.add('active');
+        const tabIndex = [...tabElement.parentElement.children].indexOf(tabElement);
+        const iframe = document.querySelectorAll('.tab-iframe')[tabIndex];
+        iframe.classList.add('active');
+        updateTabName(iframe, tabElement);
+    }
 
-        function closeTab(event, closeButton) {
-            event.stopPropagation();
-            const tab = closeButton.parentElement;
-            const tabsContainer = document.getElementById('tabs');
-            if (tab.classList.contains('active')) {
-                const nextTab = tab.nextElementSibling || tab.previousElementSibling;
-                if (nextTab && nextTab.classList.contains('tab')) {
-                    selectTab(nextTab);
-                }
-            }
-            tabsContainer.removeChild(tab);
-            resizeTabs();
-        }
+    function addTab() {
+        tabCount++;
+        const tabsContainer = document.getElementById('tabs');
+        const newTab = document.createElement('div');
+        newTab.classList.add('tab');
+        newTab.textContent = `Tab ${tabCount}`;
+        newTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        newTab.onclick = () => selectTab(newTab);
+        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
+        const iframe = document.createElement('iframe');
+        iframe.classList.add('tab-iframe');
+        iframe.id = `iframe-${tabCount}`;
+        iframe.src = '/static/index.html';
+        document.getElementById('content-wrapper').appendChild(iframe);
+        resizeTabs();
+    }
 
-        function resizeTabs() {
-            const tabs = document.querySelectorAll('.tab');
-            const tabWidth = Math.min(150, 100 / tabs.length + '%');
-            tabs.forEach(tab => {
-                tab.style.maxWidth = tabWidth;
-            });
-        }
-
-        function search() {
-            const input = document.getElementById('search-input').value.trim();
-            const iframe = document.getElementById('proxy-iframe');
-            if (input) {
-                const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-                iframe.src = `/static/embed#${url}`;
+    function closeTab(event, closeButton) {
+        event.stopPropagation();
+        const tab = closeButton.parentElement;
+        const tabsContainer = document.getElementById('tabs');
+        if (tab.classList.contains('active')) {
+            const nextTab = tab.nextElementSibling || tab.previousElementSibling;
+            if (nextTab && nextTab.classList.contains('tab')) {
+                selectTab(nextTab);
             }
         }
+        tabsContainer.removeChild(tab);
+        const iframe = document.getElementById(`iframe-${tabCount}`);
+        document.getElementById('content-wrapper').removeChild(iframe);
+        tabCount--;
+        resizeTabs();
+    }
 
-        function updateTabName() {
-            const iframe = document.getElementById('proxy-iframe');
-            iframe.onload = () => {
-                const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
-                document.querySelector('.tab.active').textContent = title.substring(0, 10);
-                document.querySelector('.tab.active').innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
-            };
-        }
+    function resizeTabs() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabWidth = Math.min(200, 150 / tabs.length + '%');
+        tabs.forEach(tab => tab.style.maxWidth = tabWidth);
+    }
 
-        function home() {
-            document.getElementById('proxy-iframe').src = '/static/index.html';
-            document.querySelector('.tab.active').setAttribute('data-url', '/static/index.html');
-        }
+    function updateTabName(iframe, tabElement) {
+        iframe.onload = () => {
+            const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
+            tabElement.textContent = title.substring(0, 10);
+            tabElement.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        };
+    }
 
-        function settings() {
-            document.getElementById('proxy-iframe').src = '/settings/prox';
-            document.querySelector('.tab.active').setAttribute('data-url', '/settings/prox');
-        }
+    function home() {
+        const iframe = document.querySelector('.tab-iframe.active');
+        iframe.src = '/static/index.html';
+        const activeTab = document.querySelector('.tab.active');
+        activeTab.textContent = 'Home';
+        activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+    }
 
-        function toggleNavbar() {
-            const navbar = document.getElementById('navbar');
-            const tabs = document.getElementById('tabs');
-            const showNavbarButton = document.getElementById('show-navbar-button');
-            navbar.classList.toggle('hidden');
-            tabs.classList.toggle('hidden');
-            showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
+    function settings() {
+        const iframe = document.querySelector('.tab-iframe.active');
+        iframe.src = '/settings/prox';
+        const activeTab = document.querySelector('.tab.active');
+        activeTab.textContent = 'Settings';
+        activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+    }
+
+    function toggleNavbar() {
+        const navbar = document.getElementById('navbar');
+        const showNavbarButton = document.getElementById('show-navbar-button');
+        navbar.classList.toggle('hidden');
+        tabs.classList.toggle('hidden');
+        showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
+    }
+
+    function search() {
+        const input = document.getElementById('search-input').value.trim();
+        const iframe = document.querySelector('.tab-iframe.active');
+        if (input) {
+            const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
+            iframe.src = `/static/embed#${url}`;
         }
-    </script>
+    }
+</script>
     <script src="/prox/settings2.js"></script>
 </body>
 </html>
