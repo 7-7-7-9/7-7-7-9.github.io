@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="icon" href="https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png" type="image/png">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://us4-ubg.github.io/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <meta property="og:title" content="US4 - Proxy">
     <meta property="og:description" content="Proxy">
@@ -211,7 +211,7 @@
         <i class="fas fa-arrow-down"></i>
     </button>
     <div class="content-wrapper" id="content-wrapper">
-        <iframe id="proxy-iframe" src="/static/index.html"></iframe>
+        <iframe id="proxy-iframe" src="https://us4-ubg.github.io/static/index.html"></iframe>
     </div>
 <script>
     let tabCount = 1;
@@ -263,10 +263,8 @@
         const input = document.getElementById('search-input').value.trim();
         const iframe = document.getElementById('proxy-iframe');
         if (input) {
-            const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-            const activeTab = document.querySelector('.tab.active');
-            activeTab.setAttribute('data-url', url);
-            iframe.src = `/static/embed#${url}`;
+        const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
+        iframe.src = `/static/embed#${url}`;
         }
     }
 
@@ -303,6 +301,6 @@
         showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
     }
 </script>
-    <script src="/prox/settings.js"></script>
+    <script src="https://us4-ubg.github.io/prox/settings.js"></script>
 </body>
 </html>
