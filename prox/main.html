@@ -220,7 +220,7 @@
         document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
         tabElement.classList.add('active');
         const url = tabElement.getAttribute('data-url');
-        document.getElementById('proxy-iframe').src = url || '/static/index.html';
+        document.getElementById('proxy-iframe').src = `/static/embed#${url}` || '/static/index.html';
     }
 
     function addTab() {
