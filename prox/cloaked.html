@@ -315,21 +315,12 @@
 }
 
 	function toggleNavbar() {
-		const navbar = document.getElementById('navbar');
+	        const navbar = document.getElementById('navbar');
 		const tabs = document.getElementById('tabs');
 		const showNavbarButton = document.getElementById('show-navbar-button');
-		const contentWrapper = document.getElementById('content-wrapper');
-    
 		navbar.classList.toggle('hidden');
 		tabs.classList.toggle('hidden');
 		showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
-    
-
-		if (navbar.classList.contains('hidden')) {
-		contentWrapper.style.height = "100%";
-			} else {
-		contentWrapper.style.height = "calc(100% - 50px)";
-	}
 }
 </script>
     <script src="/prox/settings2.js"></script>
