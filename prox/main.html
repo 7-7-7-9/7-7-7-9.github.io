@@ -251,25 +251,42 @@
         newTab.onclick = () => selectTab(newTab);
         tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
         const iframe = document.createElement('iframe');
-        iframe.src = "/static/index.html";
         iframe.classList.add('tab-iframe');
         iframe.id = `iframe-${tabCount}`;
+        iframe.src = '/static/index.html';
         document.getElementById('content-wrapper').appendChild(iframe);
-        selectTab(newTab);
+        resizeTabs();
     }
 
     function closeTab(event, closeButton) {
         event.stopPropagation();
-        const tab = closeButton.closest('.tab');
-        const tabIndex = [...tab.parentElement.children].indexOf(tab);
-        const iframe = document.querySelectorAll('.tab-iframe')[tabIndex];
-        tab.remove();
-        iframe.remove();
-        tabCount--;
-        if (tabCount > 0) {
-            const newActiveTab = tabIndex < tabCount ? document.querySelectorAll('.tab')[tabIndex] : document.querySelectorAll('.tab')[tabIndex - 1];
-            selectTab(newActiveTab);
+        const tab = closeButton.parentElement;
+        const tabsContainer = document.getElementById('tabs');
+        if (tab.classList.contains('active')) {
+            const nextTab = tab.nextElementSibling || tab.previousElementSibling;
+            if (nextTab && nextTab.classList.contains('tab')) {
+                selectTab(nextTab);
+            }
         }
+        tabsContainer.removeChild(tab);
+        const iframe = document.getElementById(`iframe-${tabCount}`);
+        document.getElementById('content-wrapper').removeChild(iframe);
+        tabCount--;
+        resizeTabs();
+    }
+
+    function resizeTabs() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabWidth = Math.min(200, 150 / tabs.length + '%');
+        tabs.forEach(tab => tab.style.maxWidth = tabWidth);
+    }
+
+    function updateTabName(iframe, tabElement) {
+        iframe.onload = () => {
+            const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
+            tabElement.textContent = title.substring(0, 10);
+            tabElement.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        };
     }
 
     function search() {
@@ -297,14 +314,14 @@
 		activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
 }
 
-    function toggleNavbar() {
-        const navbar = document.getElementById('navbar');
-        const tabs = document.getElementById('tabs');
-        const showNavbarButton = document.getElementById('show-navbar-button');
-        navbar.classList.toggle('hidden');
-        tabs.classList.toggle('hidden');
-        showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
-    }
+	function toggleNavbar() {
+	        const navbar = document.getElementById('navbar');
+		const tabs = document.getElementById('tabs');
+		const showNavbarButton = document.getElementById('show-navbar-button');
+		navbar.classList.toggle('hidden');
+		tabs.classList.toggle('hidden');
+		showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
+}
 </script>
     <script src="/prox/settings2.js"></script>
 </body>
