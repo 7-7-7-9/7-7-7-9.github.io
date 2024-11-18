@@ -213,88 +213,96 @@
     <div class="content-wrapper" id="content-wrapper">
         <iframe id="proxy-iframe" src="/static/index.html"></iframe>
     </div>
-    <script>
-        let tabCount = 1;
+<script>
+    let tabCount = 1;
 
-        function selectTab(tabElement) {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            tabElement.classList.add('active');
-            document.getElementById('proxy-iframe').src = tabElement.getAttribute('data-url');
-        }
+    function selectTab(tabElement) {
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        tabElement.classList.add('active');
+        const url = tabElement.getAttribute('data-url');
+        document.getElementById('proxy-iframe').src = url || '/static/index.html';
+    }
 
-        function addTab() {
-            tabCount++;
-            const tabsContainer = document.getElementById('tabs');
-            const newTab = document.createElement('div');
-            newTab.classList.add('tab');
-            newTab.textContent = `Tab ${tabCount}`;
-            newTab.setAttribute('data-url', '/static/index.html');
-            newTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
-            newTab.onclick = () => selectTab(newTab);
-            tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
-            resizeTabs();
-            selectTab(newTab);
-        }
+    function addTab() {
+        tabCount++;
+        const tabsContainer = document.getElementById('tabs');
+        const newTab = document.createElement('div');
+        newTab.classList.add('tab');
+        newTab.textContent = `Tab ${tabCount}`;
+        newTab.setAttribute('data-url', '/static/index.html');
+        newTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        newTab.onclick = () => selectTab(newTab);
+        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
+        resizeTabs();
+        selectTab(newTab);
+    }
 
-        function closeTab(event, closeButton) {
-            event.stopPropagation();
-            const tab = closeButton.parentElement;
-            const tabsContainer = document.getElementById('tabs');
-            if (tab.classList.contains('active')) {
-                const nextTab = tab.nextElementSibling || tab.previousElementSibling;
-                if (nextTab && nextTab.classList.contains('tab')) {
-                    selectTab(nextTab);
-                }
-            }
-            tabsContainer.removeChild(tab);
-            resizeTabs();
-        }
-
-        function resizeTabs() {
-            const tabs = document.querySelectorAll('.tab');
-            const tabWidth = Math.min(150, 100 / tabs.length + '%');
-            tabs.forEach(tab => {
-                tab.style.maxWidth = tabWidth;
-            });
-        }
-
-        function search() {
-            const input = document.getElementById('search-input').value.trim();
-            const iframe = document.getElementById('proxy-iframe');
-            if (input) {
-                const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-                iframe.src = `/static/embed#${url}`;
+    function closeTab(event, closeButton) {
+        event.stopPropagation();
+        const tab = closeButton.parentElement;
+        const tabsContainer = document.getElementById('tabs');
+        if (tab.classList.contains('active')) {
+            const nextTab = tab.nextElementSibling || tab.previousElementSibling;
+            if (nextTab && nextTab.classList.contains('tab')) {
+                selectTab(nextTab);
             }
         }
+        tabsContainer.removeChild(tab);
+        resizeTabs();
+    }
 
-        function updateTabName() {
-            const iframe = document.getElementById('proxy-iframe');
-            iframe.onload = () => {
-                const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
-                document.querySelector('.tab.active').textContent = title.substring(0, 10);
-                document.querySelector('.tab.active').innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
-            };
-        }
+    function resizeTabs() {
+        const tabs = document.querySelectorAll('.tab');
+        const tabWidth = Math.min(150, 100 / tabs.length + '%');
+        tabs.forEach(tab => {
+            tab.style.maxWidth = tabWidth;
+        });
+    }
 
-        function home() {
-            document.getElementById('proxy-iframe').src = '/static/index.html';
-            document.querySelector('.tab.active').setAttribute('data-url', '/static/index.html');
+    function search() {
+        const input = document.getElementById('search-input').value.trim();
+        const iframe = document.getElementById('proxy-iframe');
+        if (input) {
+            const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
+            const activeTab = document.querySelector('.tab.active');
+            activeTab.setAttribute('data-url', url);
+            iframe.src = `/static/embed#${url}`;
         }
+    }
 
-        function settings() {
-            document.getElementById('proxy-iframe').src = '/settings/prox';
-            document.querySelector('.tab.active').setAttribute('data-url', '/settings/prox');
-        }
+    function updateTabName() {
+        const iframe = document.getElementById('proxy-iframe');
+        iframe.onload = () => {
+            const title = iframe.contentDocument ? iframe.contentDocument.title : 'New Tab';
+            const activeTab = document.querySelector('.tab.active');
+            activeTab.textContent = title.substring(0, 10);
+            activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
+        };
+    }
 
-        function toggleNavbar() {
-            const navbar = document.getElementById('navbar');
-            const tabs = document.getElementById('tabs');
-            const showNavbarButton = document.getElementById('show-navbar-button');
-            navbar.classList.toggle('hidden');
-            tabs.classList.toggle('hidden');
-            showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
-        }
-    </script>
+    function home() {
+        const iframe = document.getElementById('proxy-iframe');
+        iframe.src = '/static/index.html';
+        const activeTab = document.querySelector('.tab.active');
+        activeTab.setAttribute('data-url', '/static/index.html');
+    }
+
+    function settings() {
+        const iframe = document.getElementById('proxy-iframe');
+        iframe.src = '/settings/prox';
+        const activeTab = document.querySelector('.tab.active');
+        activeTab.setAttribute('data-url', '/settings/prox');
+    }
+
+    function toggleNavbar() {
+        const navbar = document.getElementById('navbar');
+        const tabs = document.getElementById('tabs');
+        const showNavbarButton = document.getElementById('show-navbar-button');
+        navbar.classList.toggle('hidden');
+        tabs.classList.toggle('hidden');
+        showNavbarButton.style.display = navbar.classList.contains('hidden') ? "block" : "none";
+    }
+</script>
     <script src="/prox/settings.js"></script>
 </body>
 </html>
