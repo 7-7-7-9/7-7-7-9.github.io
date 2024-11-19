@@ -325,6 +325,19 @@
 	}
 }
 </script>
+<script src="/prox/blocked.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const iframe = document.querySelector("tab-iframe active");
+
+        iframe.addEventListener("load", () => {
+            const url = new URL(iframe.src);
+            if (blockedList.includes(url.hostname)) {
+                iframe.src = "/blocked.html";
+            }
+        });
+    });
+</script>
 	<script src="/prox/settings.js"></script>
 </body>
 </html>
