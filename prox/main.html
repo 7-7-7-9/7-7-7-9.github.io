@@ -243,7 +243,7 @@
         const tabsContainer = document.getElementById('tabs');
         const newTab = document.createElement('div');
         newTab.classList.add('tab');
-        newTab.textContent = `Tab ${tabCount}`;
+        newTab.textContent = `New Tab`;
         newTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
         newTab.onclick = () => selectTab(newTab);
         tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
