@@ -54,6 +54,7 @@
             flex-shrink: 1;
             max-width: 150px;
             overflow: hidden;
+            border-radius: 5px;
             text-overflow: ellipsis;
         }
         .tab.active {
@@ -70,7 +71,7 @@
             font-size: 14px;
         }
         .tab .close-button:hover {
-            color: #f00;
+            color: #262626;
         }
         .add-tab-button {
             padding: 10px;
@@ -274,7 +275,7 @@
 
     function resizeTabs() {
         const tabs = document.querySelectorAll('.tab');
-        const tabWidth = Math.min(200, 150 / tabs.length + '%');
+        const tabWidth = Math.min(500, 450 / tabs.length + '%');
         tabs.forEach(tab => tab.style.maxWidth = tabWidth);
     }
 
