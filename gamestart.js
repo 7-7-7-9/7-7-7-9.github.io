@@ -10,14 +10,14 @@ window.addEventListener("load", function() {
     loadingScreen.style.flexDirection = "column";
     loadingScreen.style.justifyContent = "center";
     loadingScreen.style.alignItems = "center";
-    loadingScreen.style.backgroundImage = "url('https://us4-ubg.github.io/bg.gif')";
+    loadingScreen.style.backgroundImage = "url('/bg.gif')";
     loadingScreen.style.backgroundSize = "cover";
     loadingScreen.style.color = "gold";
     loadingScreen.style.zIndex = "1000";
     loadingScreen.style.fontFamily = "'Comfortaa', cursive";
 
     const logo = document.createElement("img");
-    logo.src = "https://us4-ubg.github.io/logo.png";
+    logo.src = "/logo.png";
     logo.style.maxWidth = "150px";
     logo.style.marginBottom = "20px";
     loadingScreen.appendChild(logo);
