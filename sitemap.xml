@@ -8,279 +8,59 @@
 
 
 <url>
-  <loc>https://us4-ubg.github.io/</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/games/</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/games/clusterrush</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/partners/</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/games/basketrandom</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/apps/</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/games/subwaysurfers</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/extra/</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/apps/ai</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/games/retro-bowl</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/games/snowrider</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/games/clusterrush</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/subwaysurfers</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/boxingrandom</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/p/games?url=/clusterrush/index</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/games/soccerrandom</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/p/games?url=/basketrandom/index</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/games/basketrandom</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/p/games?url=/SubwaySurfers/index</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/games/volleyrandom</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/ai/</loc>
+  <lastmod>2024-11-19T01:37:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://us4-ubg.github.io/games/paperio</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
+  <loc>https://voucan-us4.github.io/p/games?url=/snowrider3D/index</loc>
+  <lastmod>2024-11-19T01:32:07+00:00</lastmod>
   <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/snowrider</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/holeio</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/run3</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/ovo</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/bitlife</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games/slope</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/partners.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/apps/discord</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/apps/soundbuttons</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/extra.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/retrobowl.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/clusterrush</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/subwaysurfers.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/boxingrandom</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/soccerrandom.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/basketrandom</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/volleyrandom.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/paperio.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/snowrider.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/holeio</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/run3</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/ovo</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/bitlife</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/p/games/slope</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/apps/discord-embed.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/apps/soundbuttons-embed.html</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/cloak/</loc>
-  <lastmod>2024-10-12T23:28:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/retro-bowl/</loc>
-  <lastmod>2024-10-10T20:24:28+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/clusterrush/</loc>
-  <lastmod>2024-10-10T23:15:24+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/SubwaySurfers/index.html</loc>
-  <lastmod>2024-10-11T01:01:08+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/Boxing-Random/</loc>
-  <lastmod>2024-10-11T01:58:22+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/SoccerRandom2/</loc>
-  <lastmod>2024-10-11T03:26:02+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/basketrandom/</loc>
-  <lastmod>2024-10-11T03:46:24+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/volleyrandom/</loc>
-  <lastmod>2024-10-11T03:52:34+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games-repo/paper-io-2/</loc>
-  <lastmod>2024-10-12T19:54:24+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/games-repo/snow-rider/frame.html</loc>
-  <lastmod>2024-10-12T19:54:24+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/hole-io/</loc>
-  <lastmod>2024-10-12T17:59:49+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/Run-3/tn6pS9dCf37xAhkJv/</loc>
-  <lastmod>2024-10-12T18:00:24+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/OvO/versions/1.4.4b/</loc>
-  <lastmod>2024-10-12T20:33:30+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/bitlife/</loc>
-  <lastmod>2024-10-12T21:52:18+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/Slope/</loc>
-  <lastmod>2024-10-12T23:27:28+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://us4-ubg.github.io/clusterrush/game.html</loc>
-  <lastmod>2024-10-10T23:15:24+00:00</lastmod>
-  <priority>0.41</priority>
 </url>
 
 
