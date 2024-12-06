@@ -29,7 +29,7 @@ window.addEventListener("load", function() {
     loadingScreen.appendChild(text);
 
     const tipText = document.createElement("p");
-    tipText.textContent = "Jay C i hope both sites of you pillow are warm tonight. If you ever beat me in quizlet again i will find you 🙏";
+    tipText.textContent = "Jay C i hope both sites of you pillow are warm tonight. If you ever beat me in quizizz again i will find you 🙏 - US4 Developer, Voucan";
     tipText.style.fontSize = "18px";
     tipText.style.fontWeight = "normal";
     tipText.style.marginTop = "10px";
