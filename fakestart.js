@@ -58,7 +58,7 @@ window.addEventListener("load", function() {
     const loadingdotsmax = 3;
 
     const dotInterval = setInterval(() => {
-        text.textContent = "Loading" + ".".repeat(loadingdots);
+        text.textContent = "Message, fakestart.js, temporary file, msg life 1 week" + ".".repeat(loadingdots);
         loadingdots--;
         if (loadingdots < 1) loadingdots = loadingdotsmax;
     }, 500);
