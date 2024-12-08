@@ -4,5 +4,5 @@ document.addEventListener("DOMContentLoaded", function () {
             <a href="/">US4</a>
     `;
 
-    document.querySelector('.header').innerHTML = header;
+    document.querySelector('.logo-text').innerHTML = header;
 });
