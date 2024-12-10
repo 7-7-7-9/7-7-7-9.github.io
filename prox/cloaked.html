@@ -223,7 +223,7 @@
         </div>
     </div>
     <div class="content-wrapper" id="content-wrapper">
-        <iframe class="tab-iframe active" src="/static2/index.html" id="iframe-1"></iframe>
+        <iframe class="tab-iframe active" src="/static/index.html" id="iframe-1"></iframe>
     </div>
 
 <script>
@@ -292,13 +292,13 @@
         const iframe = document.querySelector('.tab-iframe.active');
         if (input) {
             const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-            iframe.src = `/static2/embed#${url}`; //Change to Server
+            iframe.src = `/static/embed#${url}`; //Change to Server
         }
     }
 
     function home() {
  	   const iframe = document.querySelector('.tab-iframe.active');
-	    iframe.src = '/static2/index';
+	    iframe.src = '/static/index';
 	    const activeTab = document.querySelector('.tab.active');
 		activeTab.textContent = 'New Tab';
 		activeTab.innerHTML += ' <span class="close-button" onclick="closeTab(event, this)">×</span>';
@@ -325,6 +325,6 @@
 	}
 }
 </script>
-	<script src="settings.js"></script>
+	<script src="settings2.js"></script>
 </body>
 </html>
