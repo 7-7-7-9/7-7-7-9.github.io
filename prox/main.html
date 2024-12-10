@@ -292,7 +292,7 @@
         const iframe = document.querySelector('.tab-iframe.active');
         if (input) {
             const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-            iframe.src = `/static/embed#${url}`;
+            iframe.src = `/static/embed#${url}`; //Change to Server
         }
     }
 
@@ -325,6 +325,6 @@
 	}
 }
 </script>
-	<script src="/prox/settings.js"></script>
+	<script src="settings.js"></script>
 </body>
 </html>
