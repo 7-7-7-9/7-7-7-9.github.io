@@ -39,7 +39,15 @@
             backdrop-filter: blur(10px);
             color: white;
             z-index: 1000;
-            margin: 0;
+            overflow-x: auto;
+        }
+
+        .nav-buttons a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .logo-text {
             display: flex;
@@ -54,16 +62,6 @@
             font-size: 24px;
             font-weight: bold;
             text-decoration: none;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            max-width: 100%;
-        }
-        .nav-buttons a {
-            white-space: nowrap;
         }
         .game-grid {
             display: flex;
