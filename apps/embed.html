@@ -18,61 +18,50 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
+            background: url('/bg.gif') repeat center center fixed;
             background-color: black;
+            background-size: 100%;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 60px;
         }
         .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
             color: white;
+            z-index: 1000;
+            overflow-x: auto;
+        }
+
+        .nav-buttons a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .logo-text img {
             height: 40px;
             margin-right: 10px;
         }
-        .nav-buttons a {
-            color: white;
-            margin-left: 15px;
-            text-decoration: none;
-        }
         .content {
-            height: calc(100vh - 60px);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: black;
+            height: calc(100vh - 60px);
         }
         iframe {
             width: 100%;
             height: 100%;
             border: none;
-        }
-        #inputContainer {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 300px;
-            background-color: #333;
-            color: white;
-            border: 1px solid #444;
-        }
-        button {
-            padding: 10px;
-            cursor: pointer;
-            background-color: #333;
-            color: white;
-            border: none;
-            margin-left: 10px;
         }
     </style>
 </head>
