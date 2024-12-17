@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <a href="/prox"><i class="fas fa-globe"></i> Prօxy</a>
     <a href="/settings/main"><i class="fa-solid fa-gear"></i> Settings</a>
     <a href="/extra"><i class="fas fa-plus"></i> Extra</a>
-    <a href="/"><i class=""></i>                </a>
+    <a href="#"><i class=""></i>      </a>
     `;
 
     document.querySelector('.nav-buttons').innerHTML = navButtons;
