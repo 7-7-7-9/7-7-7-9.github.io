@@ -5,143 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Calculator</title>
     <style>
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: 'Comfortaa', sans-serif;
-            font-weight: bold;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        #tabs {
-            display: flex;
-            background-color: #222;
-            padding: 10px;
-            width: 100%;
-            overflow-x: auto;
-        }
-        .tab {
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            margin-right: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        .tab.active {
-            background-color: gold;
-            color: black;
-        }
-        .add-btn {
-            padding: 10px;
-            background-color: gold;
-            color: black;
-            border: none;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px;
-            width: 40px;
-        }
-        .close-btn {
-            margin-left: 10px;
-            background-color: transparent;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        #content {
-            flex: 1;
-            width: 100%;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        .class-container {
-            margin-bottom: 20px;
-        }
-        .section {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        input {
-            padding: 8px;
-            margin-right: 10px;
-            border-radius: 5px;
-            border: none;
-            outline: none;
-            background-color: #2a2a2a;
-            color: white;
-            width: 200px;
-        }
-        .remove-btn, .add-item-btn, .add-section-btn, .confirm-btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: gold;
-            color: black;
-            transition: background-color 0.3s ease;
-        }
-        .remove-btn {
-            background-color: gold;
-        }
-        .remove-btn:hover {
-            background-color: #e5b800;
-        }
-        .add-item-btn, .add-section-btn, .confirm-btn {
-            background-color: gold;
-        }
-        .add-item-btn:hover, .add-section-btn:hover, .confirm-btn:hover {
-            background-color: #e5b800;
-        }
-        .item-controls {
-            display: flex;
-            align-items: center;
-        }
-        .add-item-btn-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-        .add-item-btn {
-            padding: 8px 16px;
-            background-color: gold;
-            color: black;
-            font-size: 14px;
-            border-radius: 8px;
-            margin-left: 5px;
-        }
-        .add-section-btn {
-            background-color: gold;
-            color: black;
-            font-size: 16px;
-            border-radius: 8px;
-            margin-right: 10px;
-        }
-        .add-section-btn:hover {
-            background-color: #e5b800;
-        }
-        .total-grade {
-            color: gold;
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 10px;
-        }
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#tabs {
+    display: flex;
+    background-color: #222;
+    padding: 10px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tab {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.tab.active {
+    background-color: gold;
+    color: black;
+}
+
+.add-btn {
+    padding: 10px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+}
+
+.close-btn {
+    margin-left: 10px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#content {
+    flex: 1;
+    width: 100%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.class-container {
+    margin-bottom: 20px;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #2a2a2a;
+    color: white;
+    width: 200px;
+}
+
+.remove-btn, .add-item-btn, .add-section-btn, .confirm-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: gold;
+    color: black;
+    transition: background-color 0.3s ease;
+    margin: 0 5px;
+}
+
+.remove-btn {
+    background-color: gold;
+}
+
+.remove-btn:hover, .add-item-btn:hover, .add-section-btn:hover, .confirm-btn:hover {
+    background-color: #e5b800;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-item-btn {
+    padding: 8px 16px;
+    background-color: gold;
+    color: black;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-left: 5px;
+    flex-shrink: 0;
+}
+
+.add-section-btn {
+    background-color: gold;
+    color: black;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.add-section-btn:hover {
+    background-color: #e5b800;
+}
+
+.total-grade {
+    color: gold;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+label {
+    font-size: 14px;
+    margin-right: 5px;
+}
     </style>
 </head>
 <body>
@@ -233,6 +246,9 @@
                     saveData();
                 };
 
+                const gradeLabel = document.createElement('label');
+                gradeLabel.textContent = 'Grade:';
+
                 const gradeInput = document.createElement('input');
                 gradeInput.type = 'number';
                 gradeInput.value = section.grade;
@@ -242,6 +258,9 @@
                     calculateGrade(cls);
                     saveData();
                 };
+
+                const weightLabel = document.createElement('label');
+                weightLabel.textContent = 'Weight:';
 
                 const weightInput = document.createElement('input');
                 weightInput.type = 'number';
@@ -287,7 +306,9 @@
                 itemControls.appendChild(removeBtn);
 
                 sectionDiv.appendChild(gradeNameInput);
+                sectionDiv.appendChild(gradeLabel);
                 sectionDiv.appendChild(gradeInput);
+                sectionDiv.appendChild(weightLabel);
                 sectionDiv.appendChild(weightInput);
                 sectionDiv.appendChild(addItemBtn);
                 sectionDiv.appendChild(itemControls);
