@@ -23,7 +23,7 @@
             background-size: 100%;
             font-family: Arial, sans-serif;
             margin: 0;
-            padding-top: 60px
+            padding-top: 60px;
         }
         .header {
             position: fixed;
@@ -40,7 +40,10 @@
             z-index: 1000;
             overflow-x: auto;
         }
-
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
         .nav-buttons a {
             color: white;
             margin-left: 15px;
@@ -63,23 +66,41 @@
             height: 100%;
             border: none;
         }
+        .fullscreen-btn {
+            color: gold;
+            font-size: 24px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 <body scroll="no" style="overflow: hidden">
     <div class="header">
         <div class="logo-text">
-     <script type="text/javascript" src="/nav-bars/title.js"></script>
+            <script type="text/javascript" src="/nav-bars/title.js"></script>
         </div>
         <div class="nav-buttons">
-     <script type="text/javascript" src="/nav-bars/nav-apps.js"></script>
+            <script type="text/javascript" src="/nav-bars/nav-apps.js"></script>
         </div>
     </div>
     <div class="content">
         <iframe allowfullscreen src="/apps/embeds/movies-selector"></iframe>
+        <i class="fas fa-expand fullscreen-btn" onclick="toggleFullscreen()"></i>
     </div>
 
     <script type="text/javascript" src="/settings/settings.js"></script>
-
-
+    <script>
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
 </body>
 </html>
