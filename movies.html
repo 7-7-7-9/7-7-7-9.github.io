@@ -60,6 +60,7 @@
             justify-content: center;
             align-items: center;
             height: calc(100vh - 60px);
+            position: relative;
         }
         iframe {
             width: 100%;
@@ -70,9 +71,10 @@
             color: gold;
             font-size: 24px;
             cursor: pointer;
-            position: fixed;
+            position: absolute;
             bottom: 10px;
             right: 10px;
+            z-index: 1000;
         }
     </style>
 </head>
@@ -86,15 +88,16 @@
         </div>
     </div>
     <div class="content">
-        <iframe allowfullscreen src="/apps/embeds/movies-selector"></iframe>
-        <i class="fas fa-expand fullscreen-btn" onclick="toggleFullscreen()"></i>
+        <iframe id="iframe-content" allowfullscreen src="/apps/embeds/movies-selector"></iframe>
+        <i class="fas fa-expand fullscreen-btn" onclick="toggleIframeFullscreen()"></i>
     </div>
 
     <script type="text/javascript" src="/settings/settings.js"></script>
     <script>
-        function toggleFullscreen() {
+        function toggleIframeFullscreen() {
+            var iframe = document.getElementById('iframe-content');
             if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
+                iframe.requestFullscreen();
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
