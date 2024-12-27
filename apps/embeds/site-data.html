@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Site Data Manager">
+    <meta property="og:description" content="Manage your site data easily">
+    <meta property="og:image" content="/logo.png">
+    <meta name="keywords" content="US4">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Manager</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: bold;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #dataManager {
+            border: 2px solid #444;
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            margin: 25px auto;
+            border-radius: 10px;
+            background-color: #222;
+            color: gold;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: gold;
+            margin-bottom: 40px; /* Increased margin for more spacing */
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #4a4a4a;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+        }
+        label:hover {
+            background-color: #4a4a4a;
+        }
+    </style>
+</head>
+<body>
+    <div id="dataManager">
+        <h1>Data Manager</h1>
+        <label for="downloadButton">Export Data</label>
+        <button id="downloadButton" style="display: none;">Export Data</button>
+        <label for="uploadInput">Import Data</label>
+        <input type="file" id="uploadInput" accept=".save">
+        <p id="uploadStatus" style="margin-top: 15px; color: white;"></p>
+    </div>
+    <script>
+        function getCookies() {
+            return document.cookie.split('; ').reduce((cookies, current) => {
+                const [key, value] = current.split('=');
+                cookies[key] = decodeURIComponent(value);
+                return cookies;
+            }, {});
+        }
+
+        function setCookies(cookies) {
+            Object.entries(cookies).forEach(([key, value]) => {
+                document.cookie = `${key}=${encodeURIComponent(value)}; path=/`;
+            });
+        }
+
+        document.getElementById('downloadButton').addEventListener('click', () => {
+            const siteData = {
+                cookies: getCookies(),
+                localStorage: { ...localStorage }
+            };
+
+            const blob = new Blob([JSON.stringify(siteData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+
+            const date = new Date().toISOString().split('T')[0];
+            link.href = url;
+            link.download = `us4-data.${date}.save`;
+            link.click();
+
+            URL.revokeObjectURL(url);
+        });
+
+        document.getElementById('uploadInput').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    try {
+                        const data = JSON.parse(reader.result);
+                        setCookies(data.cookies);
+                        Object.entries(data.localStorage).forEach(([key, value]) => {
+                            localStorage.setItem(key, value);
+                        });
+
+                        document.getElementById('uploadStatus').textContent = 'Upload successful!';
+                    } catch (error) {
+                        document.getElementById('uploadStatus').textContent = 'Error: Invalid file format.';
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+    </script>
+</body>
+</html>
