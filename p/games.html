@@ -108,7 +108,7 @@
 
 <div id="popup" class="popup">
     <p>Do you want to save your data?</p>
-    <button onclick="datathing()">Yes</button>
+    <button onclick="saveData()">Yes</button>
     <button onclick="closePopup()">No</button>
     <button onclick="dontShowAgain()">Don't Show Again</button>
 </div>
@@ -165,12 +165,16 @@
         newTab.document.body.appendChild(iframe);
     }
 
-    function datathing() {
-        document.getElementById('popup').style.display = 'none';
+    function saveData() {
+        const newTab = window.open('about:blank', '_blank');
         const iframe = document.createElement('iframe');
         iframe.src = '/apps/embeds/site-data';
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
+        iframe.style.width = '100vw';
+        iframe.style.height = '100vh';
+        iframe.style.border = 'none';
+        newTab.document.body.style.margin = '0';
+        newTab.document.body.appendChild(iframe);
+        document.getElementById('popup').style.display = 'none';
     }
 
     function closePopup() {
