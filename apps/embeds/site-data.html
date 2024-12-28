@@ -30,7 +30,7 @@
         }
         h1 {
             color: gold;
-            margin-bottom: 40px; /* Increased margin for more spacing */
+            margin-bottom: 40px;
         }
         button {
             padding: 10px 20px;
@@ -59,6 +59,28 @@
         label:hover {
             background-color: #4a4a4a;
         }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        #popupContent {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            color: gold;
+            text-align: center;
+        }
+        #popup button {
+            background-color: #4a4a4a;
+        }
     </style>
 </head>
 <body>
@@ -70,6 +92,16 @@
         <input type="file" id="uploadInput" accept=".save">
         <p id="uploadStatus" style="margin-top: 15px; color: white;"></p>
     </div>
+
+    <div id="popup">
+        <div id="popupContent">
+            <p>Warning: Uploading will overwrite your existing data. Type "CONFIRM" to proceed.</p>
+            <input type="text" id="confirmationText">
+            <button id="confirmUpload">Confirm</button>
+            <button id="cancelUpload">Cancel</button>
+        </div>
+    </div>
+
     <script>
         function getCookies() {
             return document.cookie.split('; ').reduce((cookies, current) => {
@@ -85,10 +117,20 @@
             });
         }
 
-        document.getElementById('downloadButton').addEventListener('click', () => {
+        function getLocalStorage() {
+            return { ...localStorage };
+        }
+
+        function setLocalStorage(data) {
+            Object.entries(data).forEach(([key, value]) => {
+                localStorage.setItem(key, value);
+            });
+        }
+
+        document.getElementById('downloadButton').addEventListener('click', async () => {
             const siteData = {
                 cookies: getCookies(),
-                localStorage: { ...localStorage }
+                localStorage: getLocalStorage()
             };
 
             const blob = new Blob([JSON.stringify(siteData, null, 2)], { type: 'application/json' });
@@ -106,21 +148,31 @@
         document.getElementById('uploadInput').addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    try {
-                        const data = JSON.parse(reader.result);
-                        setCookies(data.cookies);
-                        Object.entries(data.localStorage).forEach(([key, value]) => {
-                            localStorage.setItem(key, value);
-                        });
+                document.getElementById('popup').style.display = 'flex';
+                document.getElementById('confirmUpload').onclick = () => {
+                    if (document.getElementById('confirmationText').value === 'CONFIRM') {
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            try {
+                                const data = JSON.parse(reader.result);
+                                setCookies(data.cookies);
+                                setLocalStorage(data.localStorage);
 
-                        document.getElementById('uploadStatus').textContent = 'Upload successful!';
-                    } catch (error) {
-                        document.getElementById('uploadStatus').textContent = 'Error: Invalid file format.';
+                                document.getElementById('uploadStatus').textContent = 'Upload successful!';
+                                document.getElementById('popup').style.display = 'none';
+                            } catch (error) {
+                                document.getElementById('uploadStatus').textContent = 'Error: Invalid file format.';
+                            }
+                        };
+                        reader.readAsText(file);
+                    } else {
+                        document.getElementById('uploadStatus').textContent = 'Error: Type "CONFIRM" to proceed.';
                     }
                 };
-                reader.readAsText(file);
+
+                document.getElementById('cancelUpload').onclick = () => {
+                    document.getElementById('popup').style.display = 'none';
+                };
             }
         });
     </script>
