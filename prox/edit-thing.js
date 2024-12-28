@@ -68,8 +68,8 @@ function injectShowScript(iframeDocument) {
       eruda.init({
         defaults: {
           displaySize: 50,
-          transparency: 0.9,
-          theme: 'Material Palenight'
+          transparency: 1,
+          theme: 'Material Deep Ocean'
         }
       });
       eruda.show();
