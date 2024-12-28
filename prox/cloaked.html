@@ -208,6 +208,9 @@
             <button onclick="document.querySelector('.tab-iframe.active').contentWindow.location.reload()">
                 <i class="fas fa-redo"></i>
             </button>
+            <button onclick="inspect()">
+                <i class="fa fa-code"></i>
+            </button>
             <button onclick="toggleFullscreen()">
                 <i class="fas fa-expand"></i>
             </button>
@@ -292,7 +295,7 @@
         const iframe = document.querySelector('.tab-iframe.active');
         if (input) {
             const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-            iframe.src = `/static/embed#${url}`; //Change to Server
+            iframe.src = `/static/embed#${url}`;
         }
     }
 
@@ -324,6 +327,10 @@
 		iframe.msRequestFullscreen();
 	}
 }
+
+    function inspect() {
+window.location.href = "javascript: (function() { fetch('/prox/edit-thing.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();"
+    }
 </script>
 	<script src="settings2.js"></script>
 </body>
