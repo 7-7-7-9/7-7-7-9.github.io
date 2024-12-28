@@ -103,28 +103,8 @@
     </div>
 
     <script>
-        function getCookies() {
-            return document.cookie.split('; ').reduce((cookies, current) => {
-                const [key, value] = current.split('=');
-                cookies[key] = decodeURIComponent(value);
-                return cookies;
-            }, {});
-        }
-
-        function setCookies(cookies) {
-            Object.entries(cookies).forEach(([key, value]) => {
-                document.cookie = `${key}=${encodeURIComponent(value)}; path=/`;
-            });
-        }
-
-        function getLocalStorage() {
-            return { ...localStorage };
-        }
-
-        function setLocalStorage(data) {
-            Object.entries(data).forEach(([key, value]) => {
-                localStorage.setItem(key, value);
-            });
+        function reloadPage() {
+            location.reload();
         }
 
         document.getElementById('downloadButton').addEventListener('click', async () => {
@@ -162,19 +142,46 @@
                                 document.getElementById('popup').style.display = 'none';
                             } catch (error) {
                                 document.getElementById('uploadStatus').textContent = 'Error: Invalid file format.';
+                                reloadPage();
                             }
                         };
                         reader.readAsText(file);
                     } else {
                         document.getElementById('uploadStatus').textContent = 'Error: Type "CONFIRM" to proceed.';
+                        reloadPage();
                     }
                 };
 
                 document.getElementById('cancelUpload').onclick = () => {
                     document.getElementById('popup').style.display = 'none';
+                    reloadPage();
                 };
             }
         });
+
+        function getCookies() {
+            return document.cookie.split('; ').reduce((cookies, current) => {
+                const [key, value] = current.split('=');
+                cookies[key] = decodeURIComponent(value);
+                return cookies;
+            }, {});
+        }
+
+        function setCookies(cookies) {
+            Object.entries(cookies).forEach(([key, value]) => {
+                document.cookie = `${key}=${encodeURIComponent(value)}; path=/`;
+            });
+        }
+
+        function getLocalStorage() {
+            return { ...localStorage };
+        }
+
+        function setLocalStorage(data) {
+            Object.entries(data).forEach(([key, value]) => {
+                localStorage.setItem(key, value);
+            });
+        }
     </script>
 </body>
 </html>
