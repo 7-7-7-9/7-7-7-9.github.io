@@ -208,6 +208,9 @@
             <button onclick="document.querySelector('.tab-iframe.active').contentWindow.location.reload()">
                 <i class="fas fa-redo"></i>
             </button>
+            <button onclick="inspect()">
+                <i class=""fa fa-code"></i>
+            </button>
             <button onclick="toggleFullscreen()">
                 <i class="fas fa-expand"></i>
             </button>
@@ -292,7 +295,7 @@
         const iframe = document.querySelector('.tab-iframe.active');
         if (input) {
             const url = input.startsWith('http') ? input : `https://google.com/search?q=${encodeURIComponent(input)}`;
-            iframe.src = `/static/embed#${url}`; //Change to Server
+            iframe.src = `/static/embed#${url}`;
         }
     }
 
@@ -324,6 +327,10 @@
 		iframe.msRequestFullscreen();
 	}
 }
+
+    function inspect() {
+window.location.href = "(function() { const scriptUrl = '/prox/edit-thing.js'; const scriptElement = document.createElement('script'); scriptElement.src = scriptUrl; document.body.appendChild(scriptElement); })();"
+    }
 </script>
 	<script src="settings.js"></script>
 </body>
