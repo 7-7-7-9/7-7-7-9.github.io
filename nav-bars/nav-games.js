@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     <a href="/movies"><i class="fa-solid fa-video"></i> Movies</a>
     <a href="/apps"><i class="fa-sharp fa-solid fa-layer-group"></i> Apps & More</a>
     <a href="/prox"><i class="fas fa-globe"></i> Prօxy</a>
-    <a href="/settings/main"><i class="fa-solid fa-gear"></i> Settings</a>
     <a href="/extra/partners"><i class="fa-solid fa-users"></i> Partners</a>
     <a href="/extra"><i class="fas fa-plus"></i> Extra</a>
+    <a href="/settings/main"><i class="fa-solid fa-gear"></i> Settings</a>
     <a href="#"><i class=""></i>      </a>
     `;
 
