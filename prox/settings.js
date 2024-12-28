@@ -39,7 +39,7 @@ if (autocloak) {
             }
 
             const siteTitle = localStorage.getItem('siteTitle') || "Home";
-            const siteLogo = localStorage.getItem('siteLogo') || "Home.png";
+            const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
 
             newTab.document.title = siteTitle;
 
