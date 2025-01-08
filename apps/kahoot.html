@@ -72,15 +72,17 @@
         </div>
     </div>
     <div class="content">
-        <iframe src="https://kahoot.it"></iframe>
+        <iframe src="https://kahoot.it" id="kahoot-frame"></iframe>
     </div>
     <script type="text/javascript" src="/settings/settings.js"></script>
     <script>
-        const iframe = document.querySelector('iframe');
-        const script = document.createElement('script');
-        script.src = '/apps/embeds/kahoot.js';
-        script.onload = () => iframe.contentWindow.document.body.appendChild(script);
-        document.body.appendChild(script);
+        const iframe = document.getElementById('kahoot-frame');
+        iframe.addEventListener('load', () => {
+            const iframeDocument = iframe.contentWindow.document;
+            const script = iframeDocument.createElement('script');
+            script.src = '/apps/embeds/kahoot.js';
+            iframeDocument.body.appendChild(script);
+        });
     </script>
 </body>
 </html>
