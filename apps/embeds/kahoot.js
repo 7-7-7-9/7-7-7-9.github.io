@@ -97,7 +97,7 @@ minimizeButton.style.cursor = 'pointer';
 handle.appendChild(minimizeButton);
 
 const header = document.createElement('h2');
-header.textContent = 'QUIZ ID';
+header.textContent = 'QUIZ ID (At top of teachers hosting URL';
 header.style.display = 'block';
 header.style.margin = '1vw';
 header.style.textAlign = 'center';
